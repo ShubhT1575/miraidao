@@ -1,0 +1,11 @@
+.authentication .form-control {
+  padding-inline-end: 0.7rem;
+}
+.signup-right-head {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+}
+.right-connect-btn {
+  background-color: yellow !important;
+}
