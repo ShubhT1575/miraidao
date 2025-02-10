@@ -46,3 +46,10 @@
     padding-bottom: 0;
     padding-top: 0;
   }
+
+  .icon-drop{
+    margin-right: 5px;
+  }
+  .side-menu__label{
+    padding-right: 15px;
+  }

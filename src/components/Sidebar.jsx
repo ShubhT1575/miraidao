@@ -147,49 +147,49 @@ function Sidebar() {
                     className="side-menu__item"
                     onClick={closeSidebar}
                   >
-                    <span className="side-menu__label">- UW</span>
+                    <span className="side-menu__label"><i className="fa-solid fa-caret-right icon-drop"></i>UW</span>
                   </Link>
                   <Link
                     to="/MatrixTreeUw1"
                     className="side-menu__item"
                     onClick={closeSidebar}
                   >
-                    <span className="side-menu__label">- UWN-1</span>
+                    <span className="side-menu__label"><i className="fa-solid fa-caret-right icon-drop"></i>UWN-1</span>
                   </Link>
                   <Link
                     to="/MatrixTreeUw2"
                     className="side-menu__item"
                     onClick={closeSidebar}
                   >
-                    <span className="side-menu__label">- UWN-2</span>
+                    <span className="side-menu__label"><i className="fa-solid fa-caret-right icon-drop"></i>UWN-2</span>
                   </Link>
                   <Link
                     to="/MatrixTree"
                     className="side-menu__item"
                     onClick={closeSidebar}
                   >
-                    <span className="side-menu__label">- UWN-3</span>
+                    <span className="side-menu__label"><i className="fa-solid fa-caret-right icon-drop"></i>UWN-3</span>
                   </Link>
                   <Link
                     to="/MatrixTreeUw4"
                     className="side-menu__item"
                     onClick={closeSidebar}
                   >
-                    <span className="side-menu__label">- UWN-4</span>
+                    <span className="side-menu__label"><i className="fa-solid fa-caret-right icon-drop"></i>UWN-4</span>
                   </Link>
                   <Link
                     to="/MatrixTreeUw5"
                     className="side-menu__item"
                     onClick={closeSidebar}
                   >
-                    <span className="side-menu__label">- UWN-5</span>
+                    <span className="side-menu__label"><i className="fa-solid fa-caret-right icon-drop"></i>UWN-5</span>
                   </Link>
                   <Link
                     to="/MatrixTreeUw6"
                     className="side-menu__item"
                     onClick={closeSidebar}
                   >
-                    <span className="side-menu__label">- UWN-6</span>
+                    <span className="side-menu__label"><i className="fa-solid fa-caret-right icon-drop"></i>UWN-6</span>
                   </Link>
                 </div>
               </div>
