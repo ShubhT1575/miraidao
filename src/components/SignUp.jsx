@@ -30,7 +30,7 @@ function SignUp() {
   const dispatch = useDispatch();
   const chainId = useChainId();
 
-  const {connector, isConnected, status, isDisconnected,address } =
+  const { connector, isConnected, status, isDisconnected, address } =
     useAccount();
 
   useEffect(() => {
@@ -55,13 +55,11 @@ function SignUp() {
   const [isCheckedNo, setIsCheckedNo] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
-
-
   useEffect(() => {
     const res = new URLSearchParams(window.location.search);
     // console.log(res,'rrrrrrrrrrrrrrrrrrrrrr')
     if (res.has("ref")) {
-      console.log('step1')
+      console.log("step1");
       const ref = res.get("ref");
       // console.log(ref,'123.........');
       setRefFromUrl(ref);
@@ -136,7 +134,6 @@ function SignUp() {
   };
 
   const Register = async (refAddress, amt) => {
-   
     try {
       setIsLoading(true);
       if (!address) {
@@ -174,14 +171,10 @@ function SignUp() {
       // }
 
       const ownerAddress = await getOwner();
-    
-      const refAddressSet = !refAddress
-        ? ownerAddress
-        : refAddress;
 
-      console.log(refAddressSet,"ref::::"
+      const refAddressSet = !refAddress ? ownerAddress : refAddress;
 
-      );
+      console.log(refAddressSet, "ref::::");
 
       const isValidRef = await UserExist(refAddressSet);
 
@@ -220,7 +213,6 @@ function SignUp() {
       // }
       // console.log("a a");
 
-
       const allowance = await checkAllowance(address, Taddress);
       // console.log("a a4");
       let appRes;
@@ -241,7 +233,7 @@ function SignUp() {
           setTimeout(() => {
             navigate("/Dashboard");
             setIsLoading(false);
-          }, 4000);
+          }, 2000);
         }
       }
     } catch (error) {
@@ -253,13 +245,17 @@ function SignUp() {
 
   useEffect(() => {
     if (address) {
-      checkAllowance(address,TokenAddres)
+      checkAllowance(address, TokenAddres)
         .then((res) => {})
         .catch((e) => {
           console.log(e, ":::::::::");
         });
     }
   }, [address]);
+
+  const handlePreviousMenu = ()=>{
+    navigate("/")
+  }
 
   return (
     <>
@@ -268,6 +264,14 @@ function SignUp() {
           {/* Left Section */}
           <div className="col-xxl-6 col-xl-7">
             <div className="row justify-content-center align-items-center h-100">
+              <div className="" style={{position: "absolute", top: "25px",left: "0px"}}>
+                <button class="Btn" onClick={handlePreviousMenu}>
+                  <div class="sign">
+                  <i class="fa-solid fa-left-long"></i>
+                  </div>
+                  {/* <div class="text">Logout</div> */}
+                </button>
+              </div>
               <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
                 <div className="card custom-card my-5">
                   <div className="card-body p-5 signup-body">

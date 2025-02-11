@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 function MatrixHead() {
-  const { wallet } = useSelector((state) => state.coreCrowd);
+  const { wallet } = useSelector((state) => state.bitgold);
   const {walletAddress} = wallet;
   const address = walletAddress;
   const copyAddress = () => {

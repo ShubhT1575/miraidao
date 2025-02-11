@@ -31702,3 +31702,9 @@ a.link-underline-dark {
 /* dropdown-label */
 
 
+.level-dash{
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

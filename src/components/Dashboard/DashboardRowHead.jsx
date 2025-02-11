@@ -42,7 +42,7 @@ const DashboardRowHead = () => {
   ];
 
   const { tokenData } = useSelector((state) => state.bitgold);
-  console.log(tokenData, "tokenData:::");
+  // console.log(tokenData, "tokenData:::");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const chainId = useChainId();
@@ -92,10 +92,10 @@ const DashboardRowHead = () => {
 
     const Tokaddress = await getUSDT();
     const Taddress = Tokaddress.address;
-    console.log(Taddress, "::::123");
+    // console.log(Taddress, "::::123");
     const tokenDecimals = Tokaddress.decimals;
 
-    console.log(Taddress, Tokaddress, "::::123");
+    // console.log(Taddress, Tokaddress, "::::123");
 
     const balance = await getBalance(config, {
       address: address,
@@ -103,10 +103,10 @@ const DashboardRowHead = () => {
     });
 
     const walletBalance = parseFloat(balance.formatted);
-    console.log(walletBalance, amt, "balllllllllllll");
+    // console.log(walletBalance, amt, "balllllllllllll");
     try {
       if (walletBalance < amt) {
-        console.log(walletBalance, amt);
+        // console.log(walletBalance, amt);
         setIsLoading(false);
         toast.error("Insufficient Balance");
         return;
@@ -147,14 +147,14 @@ const DashboardRowHead = () => {
   const checkActiveSlot = async () => {
     slots.map((slot) => {
       getActiveSlotData(address, slot.id).then((res) => {
-        console.log(res, "resssssss");
+        // console.log(res, "resssssss");
 
         if (res) {
           setSlotId((prev) => [...prev, slot.id]);
         }
       });
     });
-    console.log(slotId, "idddddddddddddd");
+    // console.log(slotId, "idddddddddddddd");
   };
 
   useEffect(() => {
@@ -162,7 +162,7 @@ const DashboardRowHead = () => {
       checkAllowance(address, tokenData?.address)
         .then((res) => {})
         .catch((e) => {
-          console.log(e, ":::::::::");
+          // console.log(e, ":::::::::");
         });
 
       checkActiveSlot();
@@ -246,6 +246,7 @@ const DashboardRowHead = () => {
                             <MdOutlineDoneOutline
                               style={{ height: "1.5rem", width: "1.5rem" }}
                             />
+                            // "Purchased"
                             // <>Purchased</>
                           ) : isNextPurchasable ? (
                             <IoIosLock

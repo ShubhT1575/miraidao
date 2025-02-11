@@ -152,7 +152,7 @@ function MainComponent() {
         <DashboardRow1 />
         <DashboardRow2 />
         <DashboardRow3 />
-        <DashboardRow4 />
+        {/* <DashboardRow4 /> */}
         {/* row  end */}
       </div>
     </div>

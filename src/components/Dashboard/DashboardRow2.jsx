@@ -7,7 +7,7 @@ import { cutAfterDecimal } from "../web3";
 import axios from "axios";
 import { apiUrl } from "../Config";
 import ApexChart from "../Chart/Radar";
-
+import { Link } from "react-router-dom";
 
 function DashboardRow2() {
   const [TBusiness, setTeamBusiness] = useState();
@@ -22,6 +22,7 @@ function DashboardRow2() {
   const { directUser, directBusiness, teamBusiness, teamUser } = dashboardData;
   const { walletAddress } = wallet;
   const address = walletAddress;
+  const [matrixIncome, setMatrixIncome] = useState([]);
 
   async function fetchData() {
     try {
@@ -36,86 +37,131 @@ function DashboardRow2() {
     }
   }
 
-    const getDirectList = async () => {
-      try {
-        const response = await axios.get(apiUrl+ "/getDirectist", {
-          params: {
-            address: address,
-          },
-        });
-        if (response?.status === 200) {
-          setDirectList(response?.data?.data);
-        } else {
-          setDirectList([]);
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error.message);
+  const getDirectList = async () => {
+    try {
+      const response = await axios.get(apiUrl + "/getDirectist", {
+        params: {
+          address: address,
+        },
+      });
+      if (response?.status === 200) {
+        setDirectList(response?.data?.data);
+      } else {
+        setDirectList([]);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching user data:", error.message);
+    }
+  };
 
-      useEffect(() => {
-        if (address) getDirectList();
-      }, [address]);
+  useEffect(() => {
+    if (address) getDirectList();
+  }, [address]);
 
-        const GetIncomeOverview = async () => {
-          try {
-            const response = await axios.get(apiUrl + "/getChatIncomeWithfilter", {
-              params: {
-                address: address,
-                datetype: dateType,
-              },
-            });
-            if (response?.status === 200) {
-              console.log(response?.data?.data?.percentages,"esponse?.data?.data")
-              setIncomeOverview(response?.data?.data?.percentages);
-            } else {
-              setIncomeOverview({});
-            }
-          } catch (error) {
-            console.error("Error fetching user data:", error.message);
-          }
-        };
-      
-        useEffect(() => {
-          if (address) GetIncomeOverview();
-        }, [address, dateType]);
+  const GetIncomeOverview = async () => {
+    try {
+      const response = await axios.get(apiUrl + "/getChatIncomeWithfilter", {
+        params: {
+          address: address,
+          datetype: dateType,
+        },
+      });
+      if (response?.status === 200) {
+        console.log(response?.data?.data?.percentages, "esponse?.data?.data");
+        setIncomeOverview(response?.data?.data?.percentages);
+      } else {
+        setIncomeOverview({});
+      }
+    } catch (error) {
+      console.error("Error fetching user data:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    if (address) GetIncomeOverview();
+  }, [address, dateType]);
 
   // console.log(, ",,,,,,,,,,,,");
   useEffect(() => {
     if (address) fetchData();
   }, [address]);
 
-   const [currentPage, setCurrentPage] = useState(1); // Current page
-    const rowsPerPage = 6; // Rows per page
-  
-    // Calculate the total number of pages
-    const totalPages = Math.ceil(directList?.length / rowsPerPage);
-  
-    // Calculate the data to display for the current page
-    const startIndex = (currentPage - 1) * rowsPerPage;
-    const endIndex = startIndex + rowsPerPage;
-    const currentData = directList?.slice(startIndex, endIndex);
-  
-    // Event handlers for pagination buttons
-    const handlePrev = () => {
-      if (currentPage > 1) {
-        setCurrentPage(currentPage - 1);
+  //  const [currentPage, setCurrentPage] = useState(1); // Current page
+  //   const rowsPerPage = 6; // Rows per page
+
+  //   // Calculate the total number of pages
+  //   const totalPages = Math.ceil(directList?.length / rowsPerPage);
+
+  //   // Calculate the data to display for the current page
+  //   const startIndex = (currentPage - 1) * rowsPerPage;
+  //   const endIndex = startIndex + rowsPerPage;
+  //   const currentData = directList?.slice(startIndex, endIndex);
+
+  //   // Event handlers for pagination buttons
+  //   const handlePrev = () => {
+  //     if (currentPage > 1) {
+  //       setCurrentPage(currentPage - 1);
+  //     }
+  //   };
+
+  //   const handleNext = () => {
+  //     if (currentPage < totalPages) {
+  //       setCurrentPage(currentPage + 1);
+  //     }
+  //   };
+
+  //   const handlePageClick = (page) => {
+  //     setCurrentPage(page);
+  //   };
+
+  const itemsPerPage = 6; // Change this to modify items per page
+  const [currentPage, setCurrentPage] = useState(1);
+  // const [matrixIncome,setMatrixIncome] = useState([]);
+
+  const totalPages = Math.ceil(matrixIncome.length / itemsPerPage);
+
+  const paginatedLevels = matrixIncome.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Handle previous page
+  const handlePreviousPage = () => {
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
+  };
+
+  // Handle next page
+  const handleNextPage = () => {
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  };
+
+  const getMatrixIncome = async () => {
+    try {
+      const response = await axios.get(apiUrl + "/matrixincome", {
+        params: {
+          userId: address,
+          matrix: 1,
+        },
+      });
+      if (response?.status === 200) {
+        console.log(response.data.user_income, "repp");
+
+        setMatrixIncome(response?.data?.user_income || []);
+        console.log(matrixIncome, "Matrix");
+        // setTotalPages(response?.data?.totalPages);
+      } else {
+        setDirectUser([]);
       }
-    };
-  
-    const handleNext = () => {
-      if (currentPage < totalPages) {
-        setCurrentPage(currentPage + 1);
-      }
-    };
-  
-    const handlePageClick = (page) => {
-      setCurrentPage(page);
-    };
+    } catch (error) {
+      console.error("Error fetching user data:", error.message);
+    }
+  };
+  useEffect(() => {
+    if (address) getMatrixIncome();
+  }, [address]);
 
   return (
     <div className="row">
-
       {/* Profit */}
       {/* <div className="col-sm-12 col-md-4 col-xxl-4">
         <div className="card custom-card wrapper">
@@ -1071,72 +1117,67 @@ function DashboardRow2() {
         </div>
       </div> */}
 
-
       <div className="col-sm-12 col-md-4 col-xxl-4">
-          <div
-            className="card custom-card overflow-hidden"
-            style={{ height: "483px" , marginBottom: "0" }}
-          >
-            <div className="card-header justify-content-between">
-              <div className="card-title">Income Overview</div>
-              <div className="dropdown">
-                <div
-                  className="btn btn-light border btn-full btn-sm "
-                  data-bs-toggle="dropdown"
-                  style={{ color: "white" }}
-                >
-                  {dateType}
-                  <i className="ti ti-chevron-down ms-1"></i>
-                </div>
-                <ul className="dropdown-menu" role="menu">
-                  <li>
-                    <a
-                      className="dropdown-item "
-                      onClick={() => setDateType("Yearly")}
-                    >
-                      Yearly
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item text-light"
-                      onClick={() => setDateType("Weekly")}
-                    >
-                      Weekly
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      className="dropdown-item "
-                      onClick={() => setDateType("Monthly")}
-                    >
-                      Monthly
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="card-body px-0">
+        <div
+          className="card custom-card overflow-hidden"
+          style={{ height: "483px"}}
+        >
+          <div className="card-header justify-content-between">
+            <div className="card-title">Income Overview</div>
+            <div className="dropdown">
               <div
-                id="Leads-overview"
-                className="d-flex justify-content-center align-items-center"
-                style={{ minHeight: "369px" }}
+                className="btn btn-light border btn-full btn-sm "
+                data-bs-toggle="dropdown"
+                style={{ color: "white" }}
               >
-                <ApexChart
-                  totalCoreIncome={IncomeOverview?.refrealRewardPercentage || 0}
-                  totalGlobleIncome={IncomeOverview?.rankBonusPercentage || 0}
-                  totalFortuneIncome={
-                    IncomeOverview?.dailyStakingPercentage || 0
-                  }
-                  totalAllIncome={
-                    IncomeOverview?.dialyloginRewardPercentage || 0
-                  }
-                  funWallet={IncomeOverview?.fundWalletPercentage || 0}
-                />
+                {dateType}
+                <i className="ti ti-chevron-down ms-1"></i>
               </div>
+              <ul className="dropdown-menu" role="menu">
+                <li>
+                  <a
+                    className="dropdown-item "
+                    onClick={() => setDateType("Yearly")}
+                  >
+                    Yearly
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item text-light"
+                    onClick={() => setDateType("Weekly")}
+                  >
+                    Weekly
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="dropdown-item "
+                    onClick={() => setDateType("Monthly")}
+                  >
+                    Monthly
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
-        </div> 
+          <div className="card-body px-0">
+            <div
+              id="Leads-overview"
+              className="d-flex justify-content-center align-items-center"
+              style={{ minHeight: "369px" }}
+            >
+              <ApexChart
+                totalCoreIncome={IncomeOverview?.refrealRewardPercentage || 0}
+                totalGlobleIncome={IncomeOverview?.rankBonusPercentage || 0}
+                totalFortuneIncome={IncomeOverview?.dailyStakingPercentage || 0}
+                totalAllIncome={IncomeOverview?.dialyloginRewardPercentage || 0}
+                funWallet={IncomeOverview?.fundWalletPercentage || 0}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       {/* <div className="col-sm-12  col-md-6 col-xxl-6">
         <div className="card custom-card">
           <div className="card-header justify-content-between position-absolute">
@@ -1289,51 +1330,58 @@ function DashboardRow2() {
           style={{ height: "483px" }}
         >
           <div className="card-header justify-content-between">
-            <div className="card-title">Direct Users Data</div>
+            <div className="card-title">Matrix Income</div>
           </div>
           <div className="card-body p-0" style={{ height: "406px" }}>
             <div className="table-responsive">
               <table className="table text-nowrap text-center direct-data-table">
                 <thead>
                   <tr>
-                    <th scope="col">S.No.</th>
-                    <th scope="col">User</th>
+                    <th scope="col">Referrer</th>
+                    <th scope="col">Matrix</th>
                     {/* <th scope="col">Level</th> */}
+                    <th scope="col">Slot Id</th>
                     <th scope="col">Amount</th>
-                    <th scope="col">Time Stamp</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {currentData?.map((rep, index) => (
-                    <tr key={index} >
-                      <td>{startIndex + index + 1}</td>
+                  {paginatedLevels?.map((rep, index) => (
+                    <tr key={index}>
+                      <td>{`${rep.user.slice(0, 6)}...${rep.user.slice(
+                        -4
+                      )}`}</td>
                       <td style={{ color: "rgb(0, 119, 181)" }}>
-                        {`${rep.user.slice(0, 6)}...${rep.user.slice(-4)}`}
+                        {rep.matrix}
                       </td>
                       {/* <td>{rep.now_level}</td> */}
-                      <td>$ {rep.totalAmount}</td>
-                      <td>{new Date(rep.timestamp).toLocaleDateString()}</td>
+                      <td>{rep.slotId}</td>
+                      <td>$ {rep.amount / 1e18}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+              {matrixIncome?.length === 0 && (
+                <div className=" w-100">
+                  <div className="w-100 text-center p-3 level-dash">No Data Found.</div>
+                </div>
+              )}
             </div>
           </div>
           <div className="mb-2 d-flex justify-content-center pb-2">
             <nav aria-label="Page navigation" className="pagination-style-2">
               <ul className="pagination mb-0 flex-wrap">
-                <li
+                {/* <li
                   className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
                 >
                   <a
                     className="page-link text-primary bg-transparent border-1"
-                    onClick={handlePrev}
+                    // onClick={handlePrev}
                   >
                     Prev
                   </a>
-                </li>
-                {Array.from({ length: totalPages }, (_, i) => (
-                  <li
+                </li> */}
+                {/* {Array.from({ length: totalPages }, (_, i) => ( */}
+                {/* <li
                     key={i}
                     className={`page-item ${
                       currentPage === i + 1 ? "active" : ""
@@ -1345,19 +1393,14 @@ function DashboardRow2() {
                     >
                       {i + 1}
                     </a>
-                  </li>
-                ))}
-                <li   
-                  className={`page-item ${
-                    currentPage === totalPages ? "disabled" : ""
-                  }`}
+                  </li> */}
+                {/* ))} */}
+                <li
+                  className={`page-item ${matrixIncome?.length === 0? "disabled":""}`}
                 >
-                  <a
-                    className="page-link text-primary bg-transparent"
-                    onClick={handleNext}
-                  >
-                    Next
-                  </a>
+                  <Link className="page-link text-primary bg-transparent" to="/LevelIncome">
+                    Navigate to Matrix Income for full table <i className="fa-solid fa-arrow-trend-up"></i>
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -1365,9 +1408,8 @@ function DashboardRow2() {
         </div>
       </div>
 
-
-             {/* PieChart*/}
-            {/* <div className="col-sm-12 col-md-3 col-xxl-3">
+      {/* PieChart*/}
+      {/* <div className="col-sm-12 col-md-3 col-xxl-3">
               <div
                 className="card custom-card overflow-hidden"
                 style={{ height: "483px" }}
@@ -1428,7 +1470,6 @@ function DashboardRow2() {
                 </div>
               </div>
             </div> */}
-
     </div>
   );
 }

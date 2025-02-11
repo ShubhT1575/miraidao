@@ -17,7 +17,8 @@ function MatrixRow() {
               <td valign="top" height="45" colSpan="8" align="center">
                 <img
                   alt="User"
-                  src="https://freeiconshop.com/wp-content/uploads/edd/person-outline-filled-128x128.png"
+                  src="/Tether Ocean1.png"
+                  style={{height: "50px"}}
                 />
                 <br />
                 <p className="indicator">

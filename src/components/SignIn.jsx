@@ -39,11 +39,24 @@ function SignIn() {
     }
   };
 
+  const handlePreviousMenu = ()=>{
+    navigate("/")
+  }
+
   return (
     
     <div className="row authentication authentication-cover-main mx-0">
       <div className="col-xxl-6 col-xl-7">
         <div className="row justify-content-center align-items-center h-100">
+        <div className="" style={{position: "absolute", top: "25px",left: "0px"}}>
+                <button class="Btn" onClick={handlePreviousMenu}>
+                  <div class="sign">
+                  <i class="fa-solid fa-left-long"></i>
+                  </div>
+
+                  {/* <div class="text">Logout</div> */}
+                </button>
+              </div>
           <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
             <div className="card custom-card my-auto">
               <div className="card-body p-5 signin-body">

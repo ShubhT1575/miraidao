@@ -191,7 +191,7 @@ h1 {
   border-radius: 50%;
   z-index: 100;
   border: 6px double #fff;  
-  background-image: url("/public/Tether\ Ocean1.png");
+  background-image: url("/Tether Ocean1.png");
   background-position: center;
   background-size: contain;
 }
@@ -598,4 +598,7 @@ h1 {
   width: 170px;
   font-size: 16px;
   font-weight: 700;
+}
+.side-menu__label{
+  padding: 0;
 }

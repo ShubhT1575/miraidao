@@ -254,10 +254,10 @@ function DashboardRow1() {
 
   return (
     <>
-      <div className="row mb-4 justify-content-between ">
+      <div className="row mb-2 justify-content-between ">
         <div
           className="row col-sm-12 col-md-12 col-lg-8 left-row-cards"
-          style={{ paddingRight: "0px" }}
+          style={{ paddingRight: "0px"}}
         >
           <div className="col-sm-6 col-lg-6">
             <div className="">
@@ -346,149 +346,130 @@ function DashboardRow1() {
               </div>
             </div>
           </div>
-          <div className="col-sm-6 col-lg-6">
-            <div className="">
-              <div className="card custom-card school-card">
-                <div className="card-body d-flex gap-2 justify-content-between">
-                  <div>
-                    <span className="d-block mb-1">Referral Reward</span>
-                    <h6 className="mb-0 fw-semibold">
-                      ${" "}
-                      {/* {rewardData &&
-                        Number(rewardData[2]) / Number("1e" + tokenDecimals)} */}
-                      0
-                    </h6>
-                  </div>
-                  <div>
-                    <span className="text-primary">
-                      <img src={Ref} alt="" style={{ width: "40px" }} />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-lg-6">
-            <div>
-              <div className="card custom-card school-card">
-                <div className="card-body d-flex gap-2 justify-content-between">
-                  <div>
-                    <span className="d-block mb-1">Rank Reward</span>
-                    <div className="d-flex gap-3">
-                      <h6 className="mb-0 fw-semibold">
-                        {/* {(
-                          (rewardData &&
-                            Number(rewardData[1]) /
-                              Number("1e" + tokenDecimals)) +
-                          (Rankward && Rankward / Number("1e" + tokenDecimals))
-                        ).toFixed(2)} */}
-                        0
-                      </h6>
-                      <span
-                        className="text-primary badge bg-success-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0 px-2"
-                        style={{ cursor: "pointer" }}
-                        onClick={ClaimRankReward}
-                      >
-                        Claim
-                      </span>
-                    </div>
-                  </div>
-                  <div>
-                    <span className="text-primary1">
-                      <img src={rankReward} alt="" style={{ width: "40px" }} />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-lg-6">
-            <div>
-              <div className="card custom-card school-card">
-                <div className="card-body d-flex gap-2 justify-content-between">
-                  <div>
-                    <span className="d-block mb-1"> Stake Reward</span>
-                    <div className="d-flex gap-3">
-                      <h6 className="mb-0 fw-semibold">
-                        ${" "}
-                        {/* {(
-                          (rewardData &&
-                            Number(rewardData[0]) /
-                              Number("1e" + tokenDecimals)) +
-                          (tstakeData &&
-                            tstakeData / Number("1e" + tokenDecimals))
-                        ).toFixed(2)} */}
-                        0
-                      </h6>
-                      <span
-                        className="text-warning badge bg-success-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0 px-2"
-                        style={{ cursor: "pointer" }}
-                        onClick={UserClaimStakeReward}
-                      >
-                        Claim
-                      </span>
+              {/* <div className="col-sm-6 col-lg-6">
+                <div className="">
+                  <div className="card custom-card school-card">
+                    <div className="card-body d-flex gap-2 justify-content-between">
                       <div>
-                        <span
-                          className="text-primary1"
-                          style={{
-                            position: "absolute",
-                            right: "15px",
-                            top: "15px",
-                          }}
-                        >
-                          <img
-                            src={FundReward}
-                            alt=""
-                            style={{ width: "40px" }}
-                          />
+                        <span className="d-block mb-1">Referral Reward</span>
+                        <h6 className="mb-0 fw-semibold">
+                          ${" "}
+                          0
+                        </h6>
+                      </div>
+                      <div>
+                        <span className="text-primary">
+                          <img src={Ref} alt="" style={{ width: "40px" }} />
                         </span>
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <span className="text-primary2">
-                      <img src={Stake} alt="" style={{ width: "40px" }} />
-                    </span>
-                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="col-sm-6 col-lg-6">
-            <div className="">
-              <div className="card custom-card school-card">
-                <div className="card-body d-flex gap-2 justify-content-between">
-                  <div>
-                    <span className="d-block mb-1"> Login Reward</span>
-                    <div className="d-flex gap-1">
-                      {" "}
-                      <h6 className="mb-0 fw-semibold">
-                        {/* ${" "}
-                        {dashboard &&
-                          Number(dashboard[13].dailyClaimIncome) /
-                            Number("1e" + tokenDecimals)} */}
-                        0
-                      </h6>
-                      {isDivEnabled && (
-                        <span
-                          className="text-info badge bg-success-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0 px-2"
-                          style={{ cursor: "pointer" }}
-                          onClick={getReawrd}
-                        >
-                          Claim
+              <div className="col-sm-6 col-lg-6">
+                <div>
+                  <div className="card custom-card school-card">
+                    <div className="card-body d-flex gap-2 justify-content-between">
+                      <div>
+                        <span className="d-block mb-1">Rank Reward</span>
+                        <div className="d-flex gap-3">
+                          <h6 className="mb-0 fw-semibold">
+                            0
+                          </h6>
+                          <span
+                            className="text-primary badge bg-success-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0 px-2"
+                            style={{ cursor: "pointer" }}
+                            onClick={ClaimRankReward}
+                          >
+                            Claim
+                          </span>
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-primary1">
+                          <img src={rankReward} alt="" style={{ width: "40px" }} />
                         </span>
-                      )}
+                      </div>
                     </div>
                   </div>
-                  <div>
-                    <span className="text-primary">
-                      <img src={Login} alt="" style={{ width: "40px" }} />
-                    </span>
+                </div>
+              </div>
+              <div className="col-sm-6 col-lg-6">
+                <div>
+                  <div className="card custom-card school-card">
+                    <div className="card-body d-flex gap-2 justify-content-between">
+                      <div>
+                        <span className="d-block mb-1"> Stake Reward</span>
+                        <div className="d-flex gap-3">
+                          <h6 className="mb-0 fw-semibold">
+                            ${" "}
+                            0
+                          </h6>
+                          <span
+                            className="text-warning badge bg-success-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0 px-2"
+                            style={{ cursor: "pointer" }}
+                            onClick={UserClaimStakeReward}
+                          >
+                            Claim
+                          </span>
+                          <div>
+                            <span
+                              className="text-primary1"
+                              style={{
+                                position: "absolute",
+                                right: "15px",
+                                top: "15px",
+                              }}
+                            >
+                              <img
+                                src={FundReward}
+                                alt=""
+                                style={{ width: "40px" }}
+                              />
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-primary2">
+                          <img src={Stake} alt="" style={{ width: "40px" }} />
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+              <div className="col-sm-6 col-lg-6">
+                <div className="">
+                  <div className="card custom-card school-card">
+                    <div className="card-body d-flex gap-2 justify-content-between">
+                      <div>
+                        <span className="d-block mb-1"> Login Reward</span>
+                        <div className="d-flex gap-1">
+                          {" "}
+                          <h6 className="mb-0 fw-semibold">
+                            0
+                          </h6>
+                          {isDivEnabled && (
+                            <span
+                              className="text-info badge bg-success-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0 px-2"
+                              style={{ cursor: "pointer" }}
+                              onClick={getReawrd}
+                            >
+                              Claim
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div>
+                        <span className="text-primary">
+                          <img src={Login} alt="" style={{ width: "40px" }} />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
           {/* <div className="col-sm-6 col-lg-6">
             <div
               className="modal fade"
@@ -606,7 +587,7 @@ function DashboardRow1() {
               </div>
             </div>
           </div> */}
-          <div className="col-sm-6 col-lg-6">
+          {/* <div className="col-sm-6 col-lg-6">
             <div className="">
               <div className="card custom-card school-card">
                 <div className="card-body d-flex gap-2 justify-content-between">
@@ -615,11 +596,7 @@ function DashboardRow1() {
                     <div className="">
                       {" "}
                       <h6 className="mb-0 fw-semibold">
-                        ${" "}
-                        {(dashboard &&
-                          Number(dashboard[5]) / ("1e" + tokenDecimals)) +
-                          (Rankward && Rankward / ("1e" + tokenDecimals)) +
-                          (tstakeData && tstakeData / ("1e" + tokenDecimals))}
+                        ${" "}0
                       </h6>
                     </div>
                   </div>
@@ -639,11 +616,6 @@ function DashboardRow1() {
                   <div>
                     <span className="d-block mb-1">Future Wallet</span>
                     <h6 className="mb-0 fw-semibold">
-                      {/* ${" "}
-                      {(dashboard &&
-                        Number(dashboard[13].futureWallet) /
-                          ("1e" + tokenDecimals)) ||
-                        0.0} */}
                       0
                     </h6>
                   </div>
@@ -655,7 +627,7 @@ function DashboardRow1() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* <div className="col-sm-6 col-lg-6">
             <div>
               <div className="card custom-card school-card">
@@ -705,7 +677,7 @@ function DashboardRow1() {
         </div>
 
         <div className="col-sm-12 col-md-12 col-lg-4">
-          <div
+          {/* <div
             className="card custom-card wrapper bg-crypto-balance"
             style={{ marginBottom: "O", height: "239px" }}
           >
@@ -716,30 +688,18 @@ function DashboardRow1() {
                     Extra Staking Boost
                   </span>
                   <h4 className="mb-1 fs-1">
-                    
-                    55%
+                    0%
                   </h4>
-                  {/* <div className=" fs-13 d-flex align-items-center">
-                          <span
-                            className="text-primary badge bg-secondary-transparent rounded-pill d-flex align-items-center fs-11 me-0 ms-2 mb-0 d-flex justify-content-center align-items-center px-3"
-                            style={{ height: "25px", cursor: "pointer" }}
-                          >
-                            <span style={{ marginRight: "10px", fontSize: "10px" }}>
-                              Lapse Level
-                            </span>{" "}
-                            <span style={{ fontSize: "17px" }}>{lapseLevel || 0}</span>
-                          </span>
-                        </div> */}
                 </div>
                 <div className="avatar avatar-lg  svg-primary2 shadow-sm">
                   <img src={lapsLogo} alt="" />
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div
-            className="card custom-card overflow-hidden earnings-card card bg-crypto-balance bg-primary shadow-sm"
-            style={{ marginBottom: "O", height: "239px" }}
+            className="card custom-card overflow-hidden earnings-card card bg-crypto-balance bg-success shadow-sm"
+            style={{ marginBottom: "O", height: "188px" }}
           >
             <div className="card-body p-0 text-fixed-white">
               <div className="p-3 position-absolute total-earnings-content w-100">

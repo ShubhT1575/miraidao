@@ -83,7 +83,7 @@ function LevelIncomeBody() {
                   {paginatedLevels?.map((item, index) => {
                     return (
                       <tr key={index}>
-                        <td className="text-info">{`${item.referrer.slice(0, 7)}.......${item.referrer.slice(-5)}`}
+                        <td className="text-info">{`${item.user.slice(0, 7)}.......${item.user.slice(-5)}`}
                         </td>
                         <td className="text-warning">{item?.matrix}</td>
                         <td className="text-light">

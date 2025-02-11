@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { apiUrl } from "../Config";
 import { FaLongArrowAltDown } from "react-icons/fa";
+import { TbBinaryTree2 } from "react-icons/tb";
 
 const MatrixTree = () => {
   const [blocks, setBlocks] = useState([]);
@@ -695,13 +696,13 @@ const MatrixTree = () => {
                   </div>
                 </div>
               </div>
-              {/* <div class="horizontal">
+              <div class="horizontal">
                 <div class="verticals twelve text-center">
                   <h1 style={{ color: "#676767" }}>
-                    Upto 10 Levels <FaLongArrowAltDown />
+                    Upto 10 Levels <TbBinaryTree2  />
                   </h1>
                 </div>
-              </div> */}
+              </div>
             </section>
           </div>
         </div>
