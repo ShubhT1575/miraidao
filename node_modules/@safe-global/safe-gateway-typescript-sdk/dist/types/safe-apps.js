@@ -15,5 +15,6 @@ var SafeAppSocialPlatforms;
     SafeAppSocialPlatforms["TWITTER"] = "TWITTER";
     SafeAppSocialPlatforms["GITHUB"] = "GITHUB";
     SafeAppSocialPlatforms["DISCORD"] = "DISCORD";
+    SafeAppSocialPlatforms["TELEGRAM"] = "TELEGRAM";
 })(SafeAppSocialPlatforms = exports.SafeAppSocialPlatforms || (exports.SafeAppSocialPlatforms = {}));
 //# sourceMappingURL=safe-apps.js.map

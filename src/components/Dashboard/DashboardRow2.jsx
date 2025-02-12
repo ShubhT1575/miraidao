@@ -1119,10 +1119,10 @@ function DashboardRow2() {
 
       <div className="col-sm-12 col-md-4 col-xxl-4">
         <div
-          className="card custom-card overflow-hidden"
+          className="card custom-card overflow-hidden new-card"
           style={{ height: "483px"}}
         >
-          <div className="card-header justify-content-between">
+          {/* <div className="card-header justify-content-between">
             <div className="card-title">Income Overview</div>
             <div className="dropdown">
               <div
@@ -1160,8 +1160,8 @@ function DashboardRow2() {
                 </li>
               </ul>
             </div>
-          </div>
-          <div className="card-body px-0">
+          </div> */}
+          {/* <div className="card-body px-0">
             <div
               id="Leads-overview"
               className="d-flex justify-content-center align-items-center"
@@ -1175,7 +1175,7 @@ function DashboardRow2() {
                 funWallet={IncomeOverview?.fundWalletPercentage || 0}
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {/* <div className="col-sm-12  col-md-6 col-xxl-6">
@@ -1191,11 +1191,11 @@ function DashboardRow2() {
         </div>
       </div> */}
       <div className="col-sm-12  col-md-4 col-xxl-4">
-        <div className="card custom-card" style={{ height: "483px" }}>
-          <div className="card-header justify-content-between">
+        <div className="card custom-card new-card" style={{ height: "483px" }}>
+          {/* <div className="card-header justify-content-between">
             <div className="card-title">Direct and Team Data</div>
-          </div>
-          <div className="card-body">
+          </div> */}
+          {/* <div className="card-body">
             <ul className="list-unstyled mb-0">
               <li className="list-group-item border-0 p-0 mb-4">
                 <div className="d-flex justify-content-between align-items-top">
@@ -1205,7 +1205,6 @@ function DashboardRow2() {
                     </span>
                     <div className="d-flex ms-2 align-items-center">
                       <span className="fw-medium mb-0">Total Direct Users</span>
-                      {/* <p className="fs-12  mb-0">10% Increases</p> */}
                     </div>
                   </div>
                   <h6 className="fw-medium mb-0">{directUser || 0.0}</h6>
@@ -1237,7 +1236,6 @@ function DashboardRow2() {
                     </div>
                   </div>
                   <h6 className="fw-medium mb-0">
-                    {/* ${directBusiness || 0.00} */}${" "}
                     {TBusiness &&
                       Number(TBusiness) / Number("1e" + tokenDecimals)}
                   </h6>
@@ -1264,7 +1262,6 @@ function DashboardRow2() {
                     </span>
                     <div className="d-flex ms-2 align-items-center">
                       <span className="fw-medium mb-0">Total Team Users</span>
-                      {/* <p className="fs-12 mb-0">11% Decrease</p> */}
                     </div>
                   </div>
                   <h6 className="fw-medium mb-0">
@@ -1320,26 +1317,25 @@ function DashboardRow2() {
                 </div>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="col-sm-12 col-md-4 col-xxl-4">
         <div
-          className="card custom-card overflow-hidden"
+          className="card custom-card overflow-hidden new-card"
           style={{ height: "483px" }}
         >
-          <div className="card-header justify-content-between">
+          {/* <div className="card-header justify-content-between">
             <div className="card-title">Matrix Income</div>
-          </div>
-          <div className="card-body p-0" style={{ height: "406px" }}>
+          </div> */}
+          {/* <div className="card-body p-0" style={{ height: "406px" }}>
             <div className="table-responsive">
               <table className="table text-nowrap text-center direct-data-table">
                 <thead>
                   <tr>
                     <th scope="col">Referrer</th>
                     <th scope="col">Matrix</th>
-                    {/* <th scope="col">Level</th> */}
                     <th scope="col">Slot Id</th>
                     <th scope="col">Amount</th>
                   </tr>
@@ -1353,7 +1349,6 @@ function DashboardRow2() {
                       <td style={{ color: "rgb(0, 119, 181)" }}>
                         {rep.matrix}
                       </td>
-                      {/* <td>{rep.now_level}</td> */}
                       <td>{rep.slotId}</td>
                       <td>$ {rep.amount / 1e18}</td>
                     </tr>
@@ -1366,35 +1361,10 @@ function DashboardRow2() {
                 </div>
               )}
             </div>
-          </div>
-          <div className="mb-2 d-flex justify-content-center pb-2">
+          </div> */}
+          {/* <div className="mb-2 d-flex justify-content-center pb-2">
             <nav aria-label="Page navigation" className="pagination-style-2">
               <ul className="pagination mb-0 flex-wrap">
-                {/* <li
-                  className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
-                >
-                  <a
-                    className="page-link text-primary bg-transparent border-1"
-                    // onClick={handlePrev}
-                  >
-                    Prev
-                  </a>
-                </li> */}
-                {/* {Array.from({ length: totalPages }, (_, i) => ( */}
-                {/* <li
-                    key={i}
-                    className={`page-item ${
-                      currentPage === i + 1 ? "active" : ""
-                    }`}
-                  >
-                    <a
-                      className="page-link"
-                      onClick={() => handlePageClick(i + 1)}
-                    >
-                      {i + 1}
-                    </a>
-                  </li> */}
-                {/* ))} */}
                 <li
                   className={`page-item ${matrixIncome?.length === 0? "disabled":""}`}
                 >
@@ -1404,7 +1374,7 @@ function DashboardRow2() {
                 </li>
               </ul>
             </nav>
-          </div>
+          </div> */}
         </div>
       </div>
 

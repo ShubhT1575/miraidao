@@ -31708,3 +31708,16 @@ a.link-underline-dark {
   justify-content: center;
   align-items: center;
 }
+.sidemenu-toggle{
+  color: black !important;
+}
+.sidemenu-toggle span {
+  background-color: black !important; /* Changes the span (lines) color */
+  /* color: black !important; */
+}
+.sidemenu-toggle i {
+  color: black !important;
+}
+.sidemenu-toggle {
+  filter: invert(100%);
+}

@@ -9,6 +9,7 @@ export declare enum ConfirmationViewTypes {
     KILN_NATIVE_STAKING_WITHDRAW = "KILN_NATIVE_STAKING_WITHDRAW"
 }
 export type DecodedDataRequest = {
+    operation: 0 | 1;
     data: string;
     to?: string;
     value?: string;

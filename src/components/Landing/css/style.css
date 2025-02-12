@@ -86,7 +86,9 @@ body {
   line-height: var(--tg-body-line-height);
   color: var(--tg-body-font-color);
   font-style: normal;
-  background-color: var(--tg-black);
+  /* background-color: var(--tg-black); */
+  background: radial-gradient(circle, #d4f059, #6bba00);
+
 }
 
 img,

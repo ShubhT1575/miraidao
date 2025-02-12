@@ -80,15 +80,15 @@ function Sidebar() {
     <div
       className={`app-sidebar app-sidebar-ll sticky t header-nav-ll`}
       id="sidebar"
-      style={{ overflowY: "auto" }}
+      style={{ overflowY: "auto" , border: "none" }}
     >
-      <div className="main-sidebar-header" style={{background: "radial-gradient(circle, #d4f059, #6bba00)", height: "88px"
+      <div className="main-sidebar-header" style={{background: "radial-gradient(ellipse at 20% 100%, #d4f059, #6bba00)", height: "88px"
 }}>
-        <a href="/dashboard" className="header-logo fs-4 fw-bold mt-3">
+        <a href="/dashboard" className="header-logo fs-4 fw-bold ">
           <img
-            src="/Tether Ocean.png"
+            src="/final logo.png"
             alt=""
-            style={{ width: "150px", height: "40px" }}
+            style={{ width: "100%", height: "40px" }}
           />
         </a>
       </div>
@@ -104,13 +104,13 @@ function Sidebar() {
               style={{ marginLeft: "20px", marginBottom: "20px" }}
             >
               <img
-                src="/Tether Ocean.png"
+                src="/final logo.png"
                 alt=""
-                style={{ height: "40px", display: "none" }}
+                style={{ height: "40px",width: "196px", display: "none" }}
                 className="dash-logo"
               />
             </div>
-            <li className="slide has-sub">
+            <li className="slide has-sub mt-4 display-flex justify-content-start">
               <Link
                 to="/Dashboard"
                 className="side-menu__item"
@@ -118,7 +118,7 @@ function Sidebar() {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6 side-menu__icon"
+                  className="w-6 h-6 side-menu__icon text-dark"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth="1.5"
@@ -130,16 +130,15 @@ function Sidebar() {
                     d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
                   ></path>
                 </svg>
-                <span className="side-menu__label">Dashboard</span>
+                <span className="side-menu__label text-dark">Dashboard</span>
               </Link>
             </li>
 
-            <li className="slide has-sub">
+            {/* <li className="slide has-sub">
               <Link className="side-menu__item" to="/MatrixTreeUw" style={{ cursor: "pointer" }}>
                 <TbBinaryTree className="side-menu__icon" />
                 <span className="side-menu__label">Matrix</span>
               </Link>
-              {/* Remove collapse classes to keep it always visible */}
               <div className="collapse-body">
                 <div className="card card-body dropdown-links">
                   <Link
@@ -193,7 +192,7 @@ function Sidebar() {
                   </Link>
                 </div>
               </div>
-            </li>
+            </li> */}
 
             {/* Matix 2 */}
             {/* <li className="slide has-sub">
@@ -209,13 +208,12 @@ function Sidebar() {
             </li> */}
 
             {/* MatrixIncome */}
-            <li className="slide has-sub">
+            {/* <li className="slide has-sub">
               <Link
                 to="/LevelIncome"
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
-                {/* <FaSackDollar className="side-menu__icon" /> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -238,7 +236,7 @@ function Sidebar() {
                 </svg>
                 <span className="side-menu__label">Matrix Income</span>
               </Link>
-            </li>
+            </li> */}
 
 
 
@@ -382,7 +380,7 @@ function Sidebar() {
             </li> */}
 
             
-            <li className="slide has-sub">
+            {/* <li className="slide has-sub">
               <div className="logoutbtn">
                 <Link
                   to="/SignIn"
@@ -401,7 +399,7 @@ function Sidebar() {
                   </button>
                 </Link>
               </div>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

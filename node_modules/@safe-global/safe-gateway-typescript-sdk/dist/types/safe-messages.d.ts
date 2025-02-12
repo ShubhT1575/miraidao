@@ -53,6 +53,7 @@ export type SafeMessageListPage = Page<SafeMessageListItem>;
 export type ProposeSafeMessageRequest = {
     message: SafeMessage['message'];
     safeAppId?: number;
+    origin?: string;
     signature: string;
 };
 export type ConfirmSafeMessageRequest = {

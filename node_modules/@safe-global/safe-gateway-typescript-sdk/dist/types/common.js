@@ -6,5 +6,6 @@ var TokenType;
     TokenType["ERC20"] = "ERC20";
     TokenType["ERC721"] = "ERC721";
     TokenType["NATIVE_TOKEN"] = "NATIVE_TOKEN";
+    TokenType["UNKNOWN"] = "UNKNOWN";
 })(TokenType = exports.TokenType || (exports.TokenType = {}));
 //# sourceMappingURL=common.js.map

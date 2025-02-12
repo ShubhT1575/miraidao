@@ -105,35 +105,35 @@ function Header() {
 
   return (
     <header className="app-header header-ll sticky" id="header" style={{background: "radial-gradient(circle, #d4f059, #6bba00)"}}>
-      {/* <div className="main-header-container container-fluid align-items-center">
+      <div className="main-header-container container-fluid align-items-center">
         <div className="header-content-left  d-flex align-items-center ">
           <div
-            className="header-element mx-lg-0 mx-2 head-tog"
+            className="header-element mx-lg-0 mx-2 head-tog text-dark"
             onClick={isCollapsed}
             id="ic"
           >
             <a
               aria-label="Hide Sidebar"
-              className="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle"
+              className="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle text-dark"
               data-bs-toggle="sidebar"
               href="#"
             >
               <span></span>
             </a>
           </div>
-          <div className=" d-flex align-items-center">
+          {/* <div className=" d-flex align-items-center">
             <span className="fw-bold head-welcome" style={{ fontSize: "22px" }}>
               Welcome Back...
               <span className="text-warning">
                 {address ? `${address.slice(0, 4)}...${address.slice(-4)}` : ""}
               </span>
             </span>
-          </div>
+          </div> */}
         </div>
-        <ul className="header-content-right">
+        {/* <ul className="header-content-right">
           <ConnectWallet />
-        </ul>
-      </div> */}
+        </ul> */}
+      </div>
     </header>
   );
 }

@@ -57,7 +57,7 @@ const Layout = ({ children }) => {
       {!hideHeaderFooterSidebar && <Header />}
       {!hideHeaderFooterSidebar && <Sidebar />}
       {children}
-      {!hideHeaderFooterSidebar && <Footer />}
+      {/* {!hideHeaderFooterSidebar && <Footer />} */}
     </>
   );
 };

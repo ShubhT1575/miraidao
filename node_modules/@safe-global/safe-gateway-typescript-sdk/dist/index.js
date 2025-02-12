@@ -199,20 +199,20 @@ exports.proposeTransaction = proposeTransaction;
 /**
  * Returns decoded data
  */
-function getConfirmationView(chainId, safeAddress, data, to, value) {
+function getConfirmationView(chainId, safeAddress, operation, data, to, value) {
     return (0, endpoint_1.postEndpoint)(baseUrl, '/v1/chains/{chainId}/safes/{safe_address}/views/transaction-confirmation', {
         path: { chainId, safe_address: safeAddress },
-        body: { data, to, value },
+        body: { operation, data, to, value },
     });
 }
 exports.getConfirmationView = getConfirmationView;
 /**
  * Get a tx preview
  */
-function getTxPreview(chainId, safeAddress, data, to, value) {
+function getTxPreview(chainId, safeAddress, operation, data, to, value) {
     return (0, endpoint_1.postEndpoint)(baseUrl, '/v1/chains/{chainId}/transactions/{safe_address}/preview', {
         path: { chainId, safe_address: safeAddress },
-        body: { data, to, value },
+        body: { operation, data, to, value },
     });
 }
 exports.getTxPreview = getTxPreview;
@@ -256,10 +256,10 @@ exports.getMasterCopies = getMasterCopies;
 /**
  * Returns decoded data
  */
-function getDecodedData(chainId, encodedData, to) {
+function getDecodedData(chainId, operation, encodedData, to) {
     return (0, endpoint_1.postEndpoint)(baseUrl, '/v1/chains/{chainId}/data-decoder', {
         path: { chainId: chainId },
-        body: { data: encodedData, to },
+        body: { operation, data: encodedData, to },
     });
 }
 exports.getDecodedData = getDecodedData;

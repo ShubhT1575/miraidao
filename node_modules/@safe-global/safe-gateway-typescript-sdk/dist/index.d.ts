@@ -102,11 +102,11 @@ export declare function proposeTransaction(chainId: string, address: string, bod
 /**
  * Returns decoded data
  */
-export declare function getConfirmationView(chainId: string, safeAddress: string, data: operations['data_decoder']['parameters']['body']['data'], to?: operations['data_decoder']['parameters']['body']['to'], value?: operations['data_decoder']['parameters']['body']['value']): Promise<AnyConfirmationView>;
+export declare function getConfirmationView(chainId: string, safeAddress: string, operation: operations['data_decoder']['parameters']['body']['operation'], data: operations['data_decoder']['parameters']['body']['data'], to?: operations['data_decoder']['parameters']['body']['to'], value?: operations['data_decoder']['parameters']['body']['value']): Promise<AnyConfirmationView>;
 /**
  * Get a tx preview
  */
-export declare function getTxPreview(chainId: string, safeAddress: string, data: operations['data_decoder']['parameters']['body']['data'], to?: operations['data_decoder']['parameters']['body']['to'], value?: operations['data_decoder']['parameters']['body']['value']): Promise<TransactionPreview>;
+export declare function getTxPreview(chainId: string, safeAddress: string, operation: operations['data_decoder']['parameters']['body']['operation'], data: operations['data_decoder']['parameters']['body']['data'], to?: operations['data_decoder']['parameters']['body']['to'], value?: operations['data_decoder']['parameters']['body']['value']): Promise<TransactionPreview>;
 /**
  * Returns all defined chain configs
  */
@@ -126,7 +126,7 @@ export declare function getMasterCopies(chainId: string): Promise<MasterCopyRepo
 /**
  * Returns decoded data
  */
-export declare function getDecodedData(chainId: string, encodedData: operations['data_decoder']['parameters']['body']['data'], to?: operations['data_decoder']['parameters']['body']['to']): Promise<DecodedDataResponse>;
+export declare function getDecodedData(chainId: string, operation: operations['data_decoder']['parameters']['body']['operation'], encodedData: operations['data_decoder']['parameters']['body']['data'], to?: operations['data_decoder']['parameters']['body']['to']): Promise<DecodedDataResponse>;
 /**
  * Returns list of `SafeMessage`s
  */
