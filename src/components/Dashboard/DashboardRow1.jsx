@@ -225,6 +225,8 @@ function DashboardRow1() {
 
   // Matrix Income
   const [totalAmount, setTotalAmount] = useState(0);
+  const [percent,setPercent] = useState(0)
+  // console.log("percent",percent)
   const getMatrixIncome = async () => {
     try {
       const response = await axios.get(apiUrl + "/matrixincome", {
@@ -238,7 +240,9 @@ function DashboardRow1() {
         const amounts = incomeData.map((item) => item.amount);
         const total = amounts.reduce((acc, num) => acc + num, 0);
 
-        setTotalAmount(total);
+        setTotalAmount(total/1e18);
+        setPercent(total > percent ? total/1e18 : percent)
+        console.log("percent",percent)
         console.log(totalAmount, "totalAmt");
         // setTotalPages(response?.data?.totalPages);
       } else {
@@ -719,14 +723,14 @@ function DashboardRow1() {
                                 2
                               )) ||
                               0.0} */}
-                      {totalAmount / 1e18}
+                      {totalAmount}
                     </h4>
-                    {/* <div className="text-fixed-white fs-13">
+                    <div className="text-fixed-white fs-13">
                             <span className="op-7"> Increased By </span>
                             <span className="badge bg-primary1 align-middle op-9">
-                              7.66%<i className="ti ti-arrow-narrow-up"></i>
+                              {percent/totalAmount * 100}%<i className="ti ti-arrow-narrow-up"></i>
                             </span>
-                          </div> */}
+                          </div>
                   </div>
                   <div className="avatar avatar-lg bg-white-transparent svg-white shadow-sm ">
                     <svg
