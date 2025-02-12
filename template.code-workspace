@@ -2,10 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"name": "SSH FS - tetherocean",
-			"uri": "ssh://tetherocean/"
 		}
 	],
 	"settings": {}

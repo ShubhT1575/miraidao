@@ -24,67 +24,67 @@ function DashboardRow2() {
   const address = walletAddress;
   const [matrixIncome, setMatrixIncome] = useState([]);
 
-  async function fetchData() {
-    try {
-      let data = await UserData(address);
-      setDashboard(data);
-      let TeamBusiness = await LevelTeamBusiness(address);
-      setTeamBusiness(TeamBusiness);
-    } catch (error) {
-      setDashboard(false);
-      setTeamBusiness(false);
-      console.log(error);
-    }
-  }
+  // async function fetchData() {
+  //   try {
+  //     let data = await UserData(address);
+  //     setDashboard(data);
+  //     let TeamBusiness = await LevelTeamBusiness(address);
+  //     setTeamBusiness(TeamBusiness);
+  //   } catch (error) {
+  //     setDashboard(false);
+  //     setTeamBusiness(false);
+  //     console.log(error);
+  //   }
+  // }
 
-  const getDirectList = async () => {
-    try {
-      const response = await axios.get(apiUrl + "/getDirectist", {
-        params: {
-          address: address,
-        },
-      });
-      if (response?.status === 200) {
-        setDirectList(response?.data?.data);
-      } else {
-        setDirectList([]);
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error.message);
-    }
-  };
+  // const getDirectList = async () => {
+  //   try {
+  //     const response = await axios.get(apiUrl + "/getDirectist", {
+  //       params: {
+  //         address: address,
+  //       },
+  //     });
+  //     if (response?.status === 200) {
+  //       setDirectList(response?.data?.data);
+  //     } else {
+  //       setDirectList([]);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error.message);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (address) getDirectList();
-  }, [address]);
+  // useEffect(() => {
+  //   if (address) getDirectList();
+  // }, [address]);
 
-  const GetIncomeOverview = async () => {
-    try {
-      const response = await axios.get(apiUrl + "/getChatIncomeWithfilter", {
-        params: {
-          address: address,
-          datetype: dateType,
-        },
-      });
-      if (response?.status === 200) {
-        console.log(response?.data?.data?.percentages, "esponse?.data?.data");
-        setIncomeOverview(response?.data?.data?.percentages);
-      } else {
-        setIncomeOverview({});
-      }
-    } catch (error) {
-      console.error("Error fetching user data:", error.message);
-    }
-  };
+  // const GetIncomeOverview = async () => {
+  //   try {
+  //     const response = await axios.get(apiUrl + "/getChatIncomeWithfilter", {
+  //       params: {
+  //         address: address,
+  //         datetype: dateType,
+  //       },
+  //     });
+  //     if (response?.status === 200) {
+  //       console.log(response?.data?.data?.percentages, "esponse?.data?.data");
+  //       setIncomeOverview(response?.data?.data?.percentages);
+  //     } else {
+  //       setIncomeOverview({});
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching user data:", error.message);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (address) GetIncomeOverview();
-  }, [address, dateType]);
+  // useEffect(() => {
+  //   if (address) GetIncomeOverview();
+  // }, [address, dateType]);
 
   // console.log(, ",,,,,,,,,,,,");
-  useEffect(() => {
-    if (address) fetchData();
-  }, [address]);
+  // useEffect(() => {
+  //   if (address) fetchData();
+  // }, [address]);
 
   //  const [currentPage, setCurrentPage] = useState(1); // Current page
   //   const rowsPerPage = 6; // Rows per page
@@ -126,14 +126,14 @@ function DashboardRow2() {
   );
 
   // Handle previous page
-  const handlePreviousPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
+  // const handlePreviousPage = () => {
+  //   if (currentPage > 1) setCurrentPage(currentPage - 1);
+  // };
 
   // Handle next page
-  const handleNextPage = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
+  // const handleNextPage = () => {
+  //   if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+  // };
 
   const getMatrixIncome = async () => {
     try {
@@ -1136,7 +1136,7 @@ function DashboardRow2() {
               <ul className="dropdown-menu" role="menu">
                 <li>
                   <a
-                    className="dropdown-item "
+                    className="dropdown-item"
                     onClick={() => setDateType("Yearly")}
                   >
                     Yearly

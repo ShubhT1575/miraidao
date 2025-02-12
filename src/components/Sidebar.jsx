@@ -138,7 +138,6 @@ function Sidebar() {
                 <TbBinaryTree className="side-menu__icon" />
                 <span className="side-menu__label">Matrix</span>
               </Link>
-
               {/* Remove collapse classes to keep it always visible */}
               <div className="collapse-body">
                 <div className="card card-body dropdown-links">

@@ -43,187 +43,188 @@ import axios from "axios";
 import { apiUrl } from "../Config";
 
 function DashboardRow1() {
-  const { tokenData } = useSelector((state) => state.bitgold);
-  const tokenDecimals = tokenData?.decimals;
-  const { wallet, dashboardData } = useSelector((state) => state.bitgold);
-  const { walletAddress } = wallet;
+  // const { tokenData } = useSelector((state) => state.bitgold);
+  // const tokenDecimals = tokenData?.decimals;
+  const { dashboardData } = useSelector((state) => state.bitgold);
+  // const { walletAddress } = wallet;
   // const address = walletAddress;
   const { address } = useAccount();
   console.log(dashboardData, "dataaa");
   const { userId, referrerId, rank, createdAt } = dashboardData;
-  const [dashboard, setDashboard] = useState();
-  const [rewardData, setRewardData] = useState();
-  const [isDivEnabled, setIsDivEnabled] = useState(false);
-  const [tstakeData, setTstakeData] = useState();
-  const [Rankward, setRankWard] = useState();
-  const [walletBal, setWalletBal] = useState("");
-  const [FundWReward, setFundWReward] = useState();
-  const [dateType, setDateType] = useState("Yearly");
-  const [IncomeOverview, setIncomeOverview] = useState({});
+  // const [dashboard, setDashboard] = useState();
+  // const [rewardData, setRewardData] = useState();
+  // const [isDivEnabled, setIsDivEnabled] = useState(false);
+  // const [tstakeData, setTstakeData] = useState();
+  // const [Rankward, setRankWard] = useState();
+  // const [walletBal, setWalletBal] = useState("");
+  // const [FundWReward, setFundWReward] = useState();
+  // const [dateType, setDateType] = useState("Yearly");
+  // const [IncomeOverview, setIncomeOverview] = useState({});
 
-  const [packageValue, setPackageValue] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const { config, TokenAddress, accessAddress } = useAccount();
+  // const [packageValue, setPackageValue] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
+  // const { config, TokenAddress, accessAddress } = useAccount();
 
-  const getReawrd = async () => {
-    try {
-      const reward = await getDailyReward();
-      if (reward) {
-        toast.success("Boost successfully!", {
-          duration: 3000,
-          position: "top-right",
-          style: {
-            background: "#4caf50",
-            color: "#fff",
-          },
-        });
-      }
-    } catch (error) {}
-  };
-  const appToken = async (amt) => {
-    try {
-      const res = tokenApprove(amt, TokenAddress, tokenDecimals);
-      await toast.promise(res, {
-        loading: "Waiting for confirmation...",
-        success: "Success!",
-        error: "error",
-      });
-      return res;
-    } catch (error) {
-      console.log(error);
-      return false;
-    }
-  };
+  // const getReawrd = async () => {
+  //   try {
+  //     const reward = await getDailyReward();
+  //     if (reward) {
+  //       toast.success("Boost successfully!", {
+  //         duration: 3000,
+  //         position: "top-right",
+  //         style: {
+  //           background: "#4caf50",
+  //           color: "#fff",
+  //         },
+  //       });
+  //     }
+  //   } catch (error) {}
+  // };
+  // const appToken = async (amt) => {
+  //   try {
+  //     const res = tokenApprove(amt, TokenAddress, tokenDecimals);
+  //     await toast.promise(res, {
+  //       loading: "Waiting for confirmation...",
+  //       success: "Success!",
+  //       error: "error",
+  //     });
+  //     return res;
+  //   } catch (error) {
+  //     console.log(error);
+  //     return false;
+  //   }
+  // };
 
-  async function fetchData(address) {
-    try {
-      let data = await UserData(address);
-      setDashboard(data);
-      let stakeDta = await StakingTotalReward(address);
-      setTstakeData(Number(stakeDta));
-      let RankReward = await RankTotalReward(address);
-      setRankWard(Number(RankReward));
-      let FundWalletReward = await FundingWalletStakingReward(address);
-      setFundWReward(Number(FundWalletReward));
-    } catch (error) {
-      setDashboard(false);
-      if (address) fetchData(address);
-      setTstakeData(false);
-      setRankWard(false);
-      setFundWReward(false);
-    }
-  }
+  // async function fetchData(address) {
+  //   try {
+  //     let data = await UserData(address);
+  //     setDashboard(data);
+  //     let stakeDta = await StakingTotalReward(address);
+  //     setTstakeData(Number(stakeDta));
+  //     let RankReward = await RankTotalReward(address);
+  //     setRankWard(Number(RankReward));
+  //     let FundWalletReward = await FundingWalletStakingReward(address);
+  //     setFundWReward(Number(FundWalletReward));
+  //   } catch (error) {
+  //     setDashboard(false);
+  //     if (address) fetchData(address);
+  //     setTstakeData(false);
+  //     setRankWard(false);
+  //     setFundWReward(false);
+  //   }
+  // }
 
   // console.log(FundWReward, "[[[[[[[[[[[[[[[");
 
-  useEffect(() => {
-    if (address) fetchData(address);
-  }, [address]);
+  // useEffect(() => {
+  //   if (address) fetchData(address);
+  // }, [address]);
 
-  async function fetchRewardWallet(address) {
-    try {
-      let data = await RewardWallet(address);
-      setRewardData(data);
-    } catch (error) {
-      setRewardData(false);
-    }
-  }
-  const handleButtonClick = (value) => {
-    setPackageValue(value);
-  };
+  // async function fetchRewardWallet(address) {
+  //   try {
+  //     let data = await RewardWallet(address);
+  //     setRewardData(data);
+  //   } catch (error) {
+  //     setRewardData(false);
+  //   }
+  // }
+  // const handleButtonClick = (value) => {
+  //   setPackageValue(value);
+  // };
 
-  const handleInputChange = (event) => {
-    setPackageValue(event.target.value);
-  };
-  function getButtonClass(value) {
-    switch (value) {
-      case "10":
-        return "primary3-light";
-      case "50":
-        return "secondary-light";
-      case "100":
-        return "warning-light";
-      case "200":
-        return "orange-light";
-      case "500":
-        return "primary2-light";
-      default:
-        return "default";
-    }
-  }
+  // const handleInputChange = (event) => {
+  //   setPackageValue(event.target.value);
+  // };
+  // function getButtonClass(value) {
+  //   switch (value) {
+  //     case "10":
+  //       return "primary3-light";
+  //     case "50":
+  //       return "secondary-light";
+  //     case "100":
+  //       return "warning-light";
+  //     case "200":
+  //       return "orange-light";
+  //     case "500":
+  //       return "primary2-light";
+  //     default:
+  //       return "default";
+  //   }
+  // }
 
-  const Stake = async (amt) => {
-    try {
-      setIsLoading(true);
-      if (!address) {
-        setIsLoading(false);
-        return toast.error("Please connect wallet");
-      }
-      if (!packageValue) {
-        setIsLoading(false);
-        return toast.error("Enter Package Value");
-      }
-      const balance = await getBalance(config, {
-        address: address,
-        token: TokenAddress,
-      });
+  // const Stake = async (amt) => {
+  //   try {
+  //     setIsLoading(true);
+  //     if (!address) {
+  //       setIsLoading(false);
+  //       return toast.error("Please connect wallet");
+  //     }
+  //     if (!packageValue) {
+  //       setIsLoading(false);
+  //       return toast.error("Enter Package Value");
+  //     }
+  //     const balance = await getBalance(config, {
+  //       address: address,
+  //       token: TokenAddress,
+  //     });
 
-      const walletBalance = parseFloat(balance.formatted);
+  //     const walletBalance = parseFloat(balance.formatted);
 
-      if (walletBalance <= amt) {
-        setIsLoading(false);
-        return toast.error("Insufficient Balance");
-      }
+  //     if (walletBalance <= amt) {
+  //       setIsLoading(false);
+  //       return toast.error("Insufficient Balance");
+  //     }
 
-      const allowance = await checkAllowance(address, TokenAddress);
-      let appRes;
+  //     const allowance = await checkAllowance(address, TokenAddress);
+  //     let appRes;
 
-      if (amt > allowance / Number("1e" + tokenDecimals)) {
-        appRes = await appToken(amt);
-      } else {
-        appRes = true;
-      }
+  //     if (amt > allowance / Number("1e" + tokenDecimals)) {
+  //       appRes = await appToken(amt);
+  //     } else {
+  //       appRes = true;
+  //     }
 
-      if (appRes) {
-        const buy = UpgradeAmount(amt, tokenDecimals);
-        await toast.promise(buy, {
-          loading: "Buying...",
-          success: "Success!",
-          error: "Error",
-        });
-        setIsLoading(false);
-      } else {
-        setIsLoading(false);
-      }
-    } catch (error) {
-      if (error.message.includes("User rejected the request.")) {
-        toast.error("User rejected the request.");
-      } else {
-        toast.error("Something Went Wrong!");
-      }
-      setIsLoading(false);
-    }
-  };
+  //     if (appRes) {
+  //       const buy = UpgradeAmount(amt, tokenDecimals);
+  //       await toast.promise(buy, {
+  //         loading: "Buying...",
+  //         success: "Success!",
+  //         error: "Error",
+  //       });
+  //       setIsLoading(false);
+  //     } else {
+  //       setIsLoading(false);
+  //     }
+  //   } catch (error) {
+  //     if (error.message.includes("User rejected the request.")) {
+  //       toast.error("User rejected the request.");
+  //     } else {
+  //       toast.error("Something Went Wrong!");
+  //     }
+  //     setIsLoading(false);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (address) fetchRewardWallet(address);
-  }, [address]);
+  // useEffect(() => {
+  //   if (address) fetchRewardWallet(address);
+  // }, [address]);
 
-  useEffect(() => {
-    // Ensure dashboard data exists
-    if (dashboard && dashboard[13]?.lastClaimedTime) {
-      const lastClaimedTime = Number(dashboard[13].lastClaimedTime) * 1000; // Convert to milliseconds
-      const currentTimeMs = Date.now();
-      const twentyFourHoursMs = 24 * 60 * 60 * 1000;
+  // useEffect(() => {
+  //   // Ensure dashboard data exists
+  //   if (dashboard && dashboard[13]?.lastClaimedTime) {
+  //     const lastClaimedTime = Number(dashboard[13].lastClaimedTime) * 1000; // Convert to milliseconds
+  //     const currentTimeMs = Date.now();
+  //     const twentyFourHoursMs = 24 * 60 * 60 * 1000;
 
-      // Check if 24 hours have passed
-      if (currentTimeMs > lastClaimedTime + twentyFourHoursMs) {
-        setIsDivEnabled(true); // Enable the div
-      }
-    }
-  }, [dashboard]);
+  //     // Check if 24 hours have passed
+  //     if (currentTimeMs > lastClaimedTime + twentyFourHoursMs) {
+  //       setIsDivEnabled(true); // Enable the div
+  //     }
+  //   }
+  // }, [dashboard]);
 
   // Matrix Income
+  
   const [totalAmount, setTotalAmount] = useState(0);
   const [percent,setPercent] = useState(0)
   // console.log("percent",percent)
