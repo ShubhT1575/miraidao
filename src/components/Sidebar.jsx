@@ -82,7 +82,8 @@ function Sidebar() {
       id="sidebar"
       style={{ overflowY: "auto" }}
     >
-      <div className="main-sidebar-header">
+      <div className="main-sidebar-header" style={{background: "radial-gradient(circle, #d4f059, #6bba00)", height: "88px"
+}}>
         <a href="/dashboard" className="header-logo fs-4 fw-bold mt-3">
           <img
             src="/Tether Ocean.png"
@@ -94,7 +95,7 @@ function Sidebar() {
       <div
         className="main-sidebar"
         id="sidebar-scroll"
-        style={{ display: "block" }}
+        style={{ display: "block",background: "radial-gradient(circle, #d4f059, #6bba00)" }}
       >
         <nav className="main-menu-container nav nav-pills flex-column sub-open position-relative h-100 mt-3">
           <ul className="main-menu main-menu-ll">
