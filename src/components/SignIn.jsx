@@ -8,11 +8,13 @@ import LOGO from "../assets/logo/Bitgold yellow.png";
 import { useSelector } from "react-redux";
 import { useAccount } from "wagmi";
 import Header from "./Landing/Header";
+import "../style/SignUp.css";
+
 
 function SignIn() {
   // const address = "0x70961132c3C0EAffA3651A578DA4c7b0e958D3cB";
-    const {connector,isConnected, status, isDisconnected,address } =
-      useAccount();
+  const { connector, isConnected, status, isDisconnected, address } =
+    useAccount();
   const [walletAddress, setWalletAddress] = useState();
   // const { isConnected } = useAccount();
   const navigate = useNavigate();
@@ -39,53 +41,72 @@ function SignIn() {
     }
   };
 
-  const handlePreviousMenu = ()=>{
-    navigate("/")
-  }
+  const handlePreviousMenu = () => {
+    navigate("/");
+  };
 
   return (
-    
-    <div className="row authentication authentication-cover-main mx-0">
+    <div
+      className="row authentication authentication-cover-main mx-0"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div className="col-xxl-6 col-xl-7">
         <div className="row justify-content-center align-items-center h-100">
-        <div className="" style={{position: "absolute", top: "25px",left: "0px"}}>
-                <button class="Btn" onClick={handlePreviousMenu}>
-                  <div class="sign">
-                  <i class="fa-solid fa-left-long"></i>
-                  </div>
-
-                  {/* <div class="text">Logout</div> */}
-                </button>
+          <div
+            className=""
+            style={{
+              position: "absolute",
+              top: "25px",
+              left: "0px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <button class="Btn" onClick={handlePreviousMenu}>
+              <div class="sign">
+                <i class="fa-solid fa-left-long"></i>
               </div>
-          <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
-            <div className="card custom-card my-auto">
+
+              {/* <div class="text">Logout</div> */}
+            </button>
+            <div className="authentication-cover-logo">
+              <ConnectWallet />
+            </div>
+          </div>
+          <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12 ">
+            <div className="card custom-card my-auto  new-card">
               <div className="card-body p-5 signin-body">
                 <div className="text-center mb-3">
-                  <img src="/Tether Ocean.png" alt="" width={150} />
+                  <img src="/final logo.png" alt="" width={150} />
                 </div>
-                <p className="h5 mb-2 text-center">Sign In</p>
+                <p className="h5 mb-2 text-center color-class">Sign In</p>
                 <div className="d-flex justify-content-center gap-1">
-                  <p className="mb-4 op-7 fw-normal text-center">
+                  <p className="mb-4 op-7 fw-normal text-center color-class">
                     Welcome back
                   </p>
-                  <p className="text-warning">
+                  <p className="text-primary">
                     {address
                       ? `${address?.slice(0, 5)}...${address?.slice(-5)}`
-                      : ""}
-                    !
+                      : "!"}
+                    
                   </p>
                 </div>
                 <div className="row gy-3">
                   <div className="col-xl-12">
-                    <label className="form-label text-default">
+                    <label className="form-label text-dark">
                       Wallet Address
                     </label>
                     <input
                       type="text"
-                      className="form-control"
+                      className="form-control color-class"
                       id="signup-firstname"
                       value={isConnected ? address : " Please Connect Wallet"}
-                      style={{ fontSize: "14px" }}
+                      style={{ fontSize: "14px", background: "radial-gradient(circle, #d4f059, #6bba00)" , border: ".5px solid green" }}
                       readOnly
                     />
                   </div>
@@ -94,7 +115,7 @@ function SignIn() {
                   {!isConnected ? (
                     <ConnectWallet className="address-connected-btn" />
                   ) : (
-                    <button className="btn btn-primary" onClick={LogIn}>
+                    <button className="btn btn-warning-gradient btn-wave " onClick={LogIn}>
                       Sign In
                     </button>
                   )}
@@ -112,7 +133,7 @@ function SignIn() {
           </div>
         </div>
       </div>
-      <div className="col-xxl-6 col-xl-5 col-lg-12 d-xl-block d-none px-0">
+      {/* <div className="col-xxl-6 col-xl-5 col-lg-12 d-xl-block d-none px-0">
         <div className="authentication-cover overflow-hidden">
           <div className="authentication-cover-logo">
             <ConnectWallet />
@@ -140,7 +161,7 @@ function SignIn() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

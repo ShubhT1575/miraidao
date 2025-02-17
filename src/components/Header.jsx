@@ -10,6 +10,7 @@ import {
 } from "../Redux/Slice";
 import { getUser } from "../API/Api";
 import { getUSDT } from "./web3";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function Header() {
   const dispatch = useDispatch();
@@ -44,15 +45,15 @@ function Header() {
     );
   }, [dispatch, chainId, add, isConnected, isDisconnected, accessAdress]);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!add) {
-        navigate("/SignIn");
-      }
-    }, 2000);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     if (!add) {
+  //       navigate("/SignIn");
+  //     }
+  //   }, 2000);
   
-    return () => clearTimeout(timeout); 
-  }, [add, navigate]);
+  //   return () => clearTimeout(timeout); 
+  // }, [add, navigate]);
   
 
   useEffect(() => {
@@ -118,7 +119,9 @@ function Header() {
               data-bs-toggle="sidebar"
               href="#"
             >
-              <span></span>
+              {/* <span></span> */}
+              {/* <i class="fa-solid fa-bars" style={{color: "black"}}></i> */}
+              <GiHamburgerMenu style={{color: '#ecf5c9'}} className="ham-btn"/>
             </a>
           </div>
           {/* <div className=" d-flex align-items-center">
@@ -130,9 +133,9 @@ function Header() {
             </span>
           </div> */}
         </div>
-        {/* <ul className="header-content-right">
+        <ul className="header-content-right">
           <ConnectWallet />
-        </ul> */}
+        </ul>
       </div>
     </header>
   );

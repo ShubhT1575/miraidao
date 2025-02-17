@@ -3,6 +3,7 @@
 }
 .has-sub{
     display: block;
+    margin-top: 0 !important;
 }
 .main-menu-container{
     overflow-y: auto;
@@ -38,7 +39,7 @@
 
   }
   .logoutbtn{
-    width: 90%;
+    width: 85%;
   }
 
   .dropdown-links{

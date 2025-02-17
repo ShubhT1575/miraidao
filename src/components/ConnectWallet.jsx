@@ -67,7 +67,7 @@ function ConnectWallet() {
                       onClick={openChainModal}
                       style={{ display: "flex", alignItems: "center" }}
                       type="button"
-                      className="btn btn-success-gradient btn-wave chain-btn-wallet"
+                      className="btn btn-warning-gradient btn-wave chain-btn-wallet"
                     >
                       {chain.hasIcon && (
                         <div
@@ -95,7 +95,7 @@ function ConnectWallet() {
                     <button
                       onClick={openAccountModal}
                       type="button"
-                      className="btn btn-success-gradient btn-wave btn-connect-address"
+                      className="btn btn-warning-gradient btn-wave btn-connect-address"
                     >
                       {account.displayName}
                       {account.displayBalance

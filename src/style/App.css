@@ -9441,11 +9441,12 @@ fieldset:disabled .btn-light.btn {
     rgb(var(--warning-rgb)),
     #9ea53c
   );
-  color: #fff !important;
+  color: #fff ;
   border: 0;
 }
 .btn.btn-warning-gradient:hover {
   border: 0;
+  color: #fff !important ;
 }
 .btn.btn-info-gradient {
   background: linear-gradient(to bottom right, rgb(var(--info-rgb)), #4990e1);
@@ -31721,3 +31722,8 @@ a.link-underline-dark {
 .sidemenu-toggle {
   filter: invert(100%);
 }
+@media (min-width: 991px) {
+  .ham-btn{
+    display: none;
+  }
+} 

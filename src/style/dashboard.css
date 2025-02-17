@@ -129,12 +129,79 @@
     height: 30px;
     color:#fff;
 }
-.carousel-card-value-sucess{}
+/* .carousel-card-value-sucess{} */
 .lock-icon{
     height: 1.5rem;
     width: 1.5rem;
 }
 .new-card{
 	background: linear-gradient(to bottom, #eaff97, #c59d3a);
-
+}
+.new-card-box{
+	background: linear-gradient(to bottom, #c59d3a, #eaff97);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #000 !important;
+}
+.new-card-box span{
+	color: #000;
+	font-size: 20px;
+	font-weight: 600;
+}
+.slotBox{
+	/* background: linear-gradient(to right, #38ef7d, #11998e); */
+	border-radius: 8px;
+}
+.slotBox-green{
+	background: linear-gradient(to right, #38ef7d, #11998e);
+	border-radius: 8px;
+}
+.row-slot{
+	display: flex;
+	justify-content: space-evenly;
+	gap: 15px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.upcoming{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.heading-info{
+	/* justify-content: start !important; */
+	display: flex !important;
+	justify-content: start;
+	align-items: center;
+}
+.small-box{
+	margin: 0 !important;
+}
+.btn-div{
+	display: flex;
+	justify-content: space-around;
+	gap: 20px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.color-dark{
+	color: black !important;
+}
+.recycle{
+	height: 30px;
+	width: 30px;
+	background-image: url("../assets/research-arrows-circle.png");
+	/* background-color: black; */
+	background-size: contain;
+	background-position: center;
+	/* z-index: 100; */
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	font-weight: 600;
 }

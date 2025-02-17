@@ -700,7 +700,7 @@ function Homepage() {
               </div>
               <div className="col-lg-6 d-flex justify-content-end footer-text-landing">
                 <p className="copyright-text">
-                  Copyright © TETHER OCEAN 2025 All rights
+                  Copyright © MiraiDao 2025 All rights
                   reserved.
                 </p>
 

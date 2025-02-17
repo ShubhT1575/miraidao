@@ -9,16 +9,10 @@ function CoreHead() {
       <div>
         <nav>
           <ol className="breadcrumb mb-1">
-            <li className="breadcrumb-item">
-              <a href="#"> Page </a>
-            </li>
-            <li className="breadcrumb-item active" aria-current="page">
-              Daily Login Reward
-            </li>
           </ol>
         </nav>
-        <h1 className="page-title fw-medium fs-18 mb-0 text-light">
-          Daily Login Reward
+        <h1 className="page-title fw-bold fs-18 mb-0 text-dark">
+        Referral Income Data
         </h1>
       </div>
     </div>

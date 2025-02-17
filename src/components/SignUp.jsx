@@ -5,6 +5,7 @@ import { useAccount, useChainId, useConnect } from "wagmi";
 import { Link } from "react-router-dom";
 import LOGO from "../assets/logo/Bitgold yellow.png";
 import { useDispatch, useSelector } from "react-redux";
+import "../style/SignUp.css";
 import { getAddressbyRefrralId } from "../API/Api.js";
 import {
   buyPackage,
@@ -13,6 +14,7 @@ import {
   getUSDT,
   tokenApprove,
   UserExist,
+  userRegister,
 } from "./web3";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -46,7 +48,7 @@ function SignUp() {
     );
   }, [dispatch, chainId, address, isConnected, isDisconnected]);
 
-  const [packageValue, setPackageValue] = useState("7");
+  const [packageValue, setPackageValue] = useState("1");
   const [inputRef, setInputRef] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [refFromUrl, setRefFromUrl] = useState();
@@ -160,6 +162,7 @@ function SignUp() {
         setIsLoading(false);
         return;
       }
+
       // let getRefAddress;
       // if (refAddress) {
       //   getRefAddress = await getAddressbyRefrralId(refAddress);
@@ -183,27 +186,29 @@ function SignUp() {
         toast.error("Invalid Sponsor Address");
         return;
       }
+    // console.log("xxx")
 
-      const Tokaddress = await getUSDT();
-      const Taddress = Tokaddress.address;
-      console.log(Taddress, "::::123");
-      const tokenDecimals = Tokaddress.decimals;
-
+      
+      // const Tokaddress = await getUSDT();
+      // const Taddress = Tokaddress.address;
+      // console.log(Taddress, "::::123");
+      // const tokenDecimals = Tokaddress.decimals;
+      
       // console.log(Taddress, Tokaddress, "::::123");
 
-      const balance = await getBalance(config, {
-        address: address,
-        token: Taddress,
-      });
+      // const balance = await getBalance(config, {
+      //   address: address,
+      //   token: Taddress,
+      // });
 
-      const walletBalance = parseFloat(balance.formatted);
+      // const walletBalance = parseFloat(balance.formatted);
 
-      if (walletBalance < amt) {
-        console.log(walletBalance, amt);
-        setIsLoading(false);
-        toast.error("Insufficient Balance");
-        return;
-      }
+      // if (walletBalance < amt) {
+      //   console.log(walletBalance, amt);
+      //   setIsLoading(false);
+      //   toast.error("Insufficient Balance");
+      //   return;
+      // }
 
       // if (!isChecked) {
       //   setIsLoading(false);
@@ -213,17 +218,17 @@ function SignUp() {
       // }
       // console.log("a a");
 
-      const allowance = await checkAllowance(address, Taddress);
+      // const allowance = await checkAllowance(address, Taddress);
       // console.log("a a4");
       let appRes;
-      if (amt > allowance / Number("1e" + tokenDecimals)) {
-        appRes = await appToken(amt, Taddress, tokenDecimals);
-      } else {
-        appRes = true;
-      }
 
+      // if (amt > allowance / Number("1e" + tokenDecimals)) {
+      //   appRes = await appToken(amt, Taddress, tokenDecimals);
+      // } else {
+      // }
+      appRes = true;
       if (appRes) {
-        const buy = buyPackage(refAddressSet, amt, tokenDecimals);
+        const buy = userRegister(refAddressSet, amt);
         await toast.promise(buy, {
           loading: "Buying...",
           success: "Success!",
@@ -253,50 +258,71 @@ function SignUp() {
     }
   }, [address]);
 
-  const handlePreviousMenu = ()=>{
-    navigate("/")
-  }
+  const handlePreviousMenu = () => {
+    navigate("/");
+  };
 
   return (
     <>
       <div>
-        <div className="row authentication authentication-cover-main mx-0">
+        <div
+          className="row authentication authentication-cover-main mx-0"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           {/* Left Section */}
           <div className="col-xxl-6 col-xl-7">
             <div className="row justify-content-center align-items-center h-100">
-              <div className="" style={{position: "absolute", top: "25px",left: "0px"}}>
+              <div
+                className=""
+                style={{
+                  position: "absolute",
+                  top: "25px",
+                  left: "0px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
                 <button class="Btn" onClick={handlePreviousMenu}>
                   <div class="sign">
-                  <i class="fa-solid fa-left-long"></i>
+                    <i class="fa-solid fa-left-long"></i>
                   </div>
                   {/* <div class="text">Logout</div> */}
                 </button>
+                <div className="authentication-cover-logo">
+              <ConnectWallet />
+            </div>
               </div>
               <div className="col-xxl-7 col-xl-9 col-lg-6 col-md-6 col-sm-8 col-12">
-                <div className="card custom-card my-5">
+                <div className="card custom-card my-5  new-card">
                   <div className="card-body p-5 signup-body">
                     <div className="text-center mb-3">
-                      <img src="/Tether Ocean.png" alt="" width={150} />
+                      <img src="/final logo.png" alt="" width={150} />
                     </div>
-                    <p className="h5 mb-2 text-center">Register Here</p>
-                    <p className="mb-4 op-7 fw-normal text-center">
+                    <p className="h5 mb-2 text-center color-class">Register Here</p>
+                    <p className="mb-4 op-7 fw-normal text-center color-class">
                       Welcome! Dashboard by creating your account.
                     </p>
                     <div className="row gy-3">
                       <div className="col-xl-12">
                         <label
                           htmlFor="signup-firstname"
-                          className="form-label text-default"
+                          className="form-label text-default color-class"
                         >
                           Wallet Address
                         </label>
                         <input
                           type="text"
-                          className="form-control text-light"
+                          className="form-control color-class"
                           id="signup-firstname"
                           placeholder={
                             isConnected ? address : "Connect Your Wallet First"
                           }
+                      style={{ fontSize: "14px", background: "radial-gradient(circle, #d4f059, #6bba00)" , border: ".5px solid green" }}
                           readOnly
                         />
                       </div>
@@ -304,7 +330,7 @@ function SignUp() {
                         <div className="col-xl-12 " id="sponsor-div">
                           <label
                             htmlFor="signup-sponsor-id"
-                            className="form-label text-default text-light"
+                            className="form-label text-default color-class"
                           >
                             Sponsor Id ?
                           </label>
@@ -323,7 +349,7 @@ function SignUp() {
                       <div className="col-xl-12">
                         <label
                           htmlFor="signup-package"
-                          className="form-label text-default"
+                          className="form-label text-default color-class"
                         >
                           Package<sup className="fs-12 text-light">*</sup>
                         </label>
@@ -408,7 +434,7 @@ function SignUp() {
                           onChange={handleCheckboxChange}
                         />
                         <div
-                          className="form-check mt-2"
+                          className="form-check mt-2 color-class"
                           style={{ paddingRight: "0px" }}
                         >
                           <label
@@ -422,7 +448,7 @@ function SignUp() {
                         </div>
                       </div>
                     </div>
-                    <div className="cc mt-4 d-grid btn btn-outline-primary address-notconnected-btn d-flex justify-content-center align-content-center text-primary">
+                    <div className="cc mt-4 d-grid btn btn-warning-gradient btn-wave address-notconnected-btn d-flex justify-content-center align-content-center text-primary">
                       {isLoading ? (
                         <span
                           className="spinner-border text-light"
@@ -468,7 +494,7 @@ function SignUp() {
           </div>
 
           {/* Right Section */}
-          <div className="col-xxl-6 col-xl-5 col-lg-12 d-xl-block d-none px-0">
+          {/* <div className="col-xxl-6 col-xl-5 col-lg-12 d-xl-block d-none px-0">
             <div className="authentication-cover overflow-hidden">
               <div className="authentication-cover-logo">
                 <ConnectWallet />
@@ -498,7 +524,7 @@ function SignUp() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

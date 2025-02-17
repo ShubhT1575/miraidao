@@ -85,3 +85,12 @@
 .Btn:active {
   transform: translate(2px ,2px);
 }
+.new-card{
+	/* background: linear-gradient(to bottom, #eaff97, #c59d3a); */
+  /* background: linear-gradient(to top, #eaff97, #c59d3a); */
+	background: linear-gradient(to bottom, #c59d3a, #eaff97) !important;
+  border-radius: 15px !important;
+}
+.color-class{
+  color: black !important;
+}

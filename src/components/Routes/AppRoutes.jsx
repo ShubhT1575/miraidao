@@ -75,9 +75,9 @@ const AppRoutes = () => {
           {/* <Route path="/IncomeGraph" element={<IncomeMain />} />  */}
           {/* <Route path="/Stake" element={<StakeMain />} /> */}
           {/* <Route path="/Form" element={<FormMAin />} /> */}
-          {/* <Route path="/CoreIncome" element={<CoreMain />} /> */}
+          <Route path="/CoreIncome" element={<CoreMain />} />
           {/* <Route path="/GlobalIncome" element={<GlobalMain />} /> */}
-          {/* <Route path="/FortuneIncome" element={<FortuneMain />} /> */}
+          <Route path="/FortuneIncome" element={<FortuneMain />} />
           {/* <Route path="/Ranking" element={<RankingMain />} /> */}
           {/* <Route path="/Profile" element={<ProfileMain />} /> */}
           {/* <Route path="/Support" element={<Support />} /> */}
@@ -93,7 +93,7 @@ const AppRoutes = () => {
           {/* <Route path="/MatrixTreeAll" element={<MatrixTreeAll />} /> */}
           {/* <Route path="/LapseWallet" element={<LapseMain />} /> */}
           {/* <Route path="/AutoGlobal" element={<AutoMain />} /> */}
-          {/* <Route path="/RankReward" element={<RankMain />} /> */}
+          <Route path="/RankReward" element={<RankMain />} />
           {/* <Route path="/Withdraw" element={<WithdrawMain />} /> */}
           <Route path="/Terms" element={<Terms />} />
           <Route path="/SignIn" element={<SignIn />} />

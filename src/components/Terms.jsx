@@ -10,7 +10,7 @@ function Terms() {
             <div className="card-body p-4">
               <div className="mb-3 d-flex justify-content-between">
                 <h3 className="mb-1 text-primary">
-                  Terms of Use for TETHER OCEAN
+                  Terms of Use for MiraiDao
                 </h3>
                 <button class="btn btn-icon btn-danger btn-wave" onClick={() => window.history.back()}>
                   <i class="ri-arrow-left-circle-line"></i>
@@ -22,7 +22,7 @@ function Terms() {
                     1. Introduction :
                   </div>
                   <p className="mb-0">
-                    Welcome to TETHER OCEAN, a decentralized platform that
+                    Welcome to MiraiDao, a decentralized platform that
                     empowers individuals and communities to raise funds. By
                     accessing or using our platform, you agree to comply with
                     and be bound by these Terms of Use. Please read them
@@ -34,7 +34,7 @@ function Terms() {
                     2. Platform Purpose :
                   </div>
                   <p className="mb-0">
-                    TETHER OCEAN is a decentralized platform that facilitates
+                    MiraiDao is a decentralized platform that facilitates
                     fundraising by providing tools and resources to connect
                     communities. We do not encourage or solicit donations or
                     investments, nor do we guarantee returns on any
@@ -68,7 +68,7 @@ function Terms() {
                     4. No Liability for Returns :
                   </div>
                   <p className="mb-0">
-                    TETHER OCEAN is not responsible for ensuring or guaranteeing
+                    MiraiDao is not responsible for ensuring or guaranteeing
                     any financial returns or benefits from donations or
                     contributions. Any potential returns are contingent upon the
                     growth and success of the specific community or project.
@@ -79,7 +79,7 @@ function Terms() {
                     5. No Endorsement or Verification :
                   </div>
                   <p className="mb-0">
-                    TETHER OCEAN does not endorse, verify, or take responsibility
+                    MiraiDao does not endorse, verify, or take responsibility
                     for the accuracy or legitimacy of campaigns hosted on the
                     platform. Contributors should exercise due diligence before
                     making any financial commitments.
@@ -121,7 +121,7 @@ function Terms() {
                     8. Decentralization and Security :
                   </div>
                   <p className="mb-0">
-                    As a decentralized platform, TETHER OCEAN operates without
+                    As a decentralized platform, MiraiDao operates without
                     centralized oversight of user transactions. Users are
                     encouraged to take appropriate security measures to protect
                     their funds and information.
@@ -132,7 +132,7 @@ function Terms() {
                     9. Limitation of Liability :
                   </div>
                   <span className="fs-6 text-primary3">
-                    TETHER OCEAN is not liable for any loss, damage, or claims
+                    MiraiDao is not liable for any loss, damage, or claims
                     arising from the use of the platform, including but not
                     limited to :-
                   </span>
@@ -155,7 +155,7 @@ function Terms() {
                     10. Amendments :
                   </div>
                   <p className="mb-0">
-                    TETHER OCEAN reserves the right to modify or update these
+                    MiraiDao reserves the right to modify or update these
                     Terms of Use at any time. Users will be notified of
                     significant changes, and continued use of the platform
                     constitutes acceptance of the updated terms.

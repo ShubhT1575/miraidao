@@ -52,6 +52,22 @@ export const buyPackage = async (ref, amt, tokenDecimal) => {
   console.log(receipt, "receipt");
   return receipt;
 };
+
+export const userRegister = async (ref, packageId) => {
+  console.log(ref, packageId, ":::::package");
+  const result = await writeContract(config, {
+    abi: ContractABI,
+    address: ContractAddress,
+    functionName: "registrationEx",
+    args: [ref,packageId],
+  });
+  console.log(result, "result");
+  const receipt = await waitForTransactionReceipt(config, {
+    hash: result,
+  });
+  console.log(receipt, "receipt");
+  return receipt;
+};
   
 
 export const buySlot= async (amt,id,tokenDecimal) => {
@@ -61,7 +77,22 @@ export const buySlot= async (amt,id,tokenDecimal) => {
     address: ContractAddress,
     functionName: "purchaseSlot",
     args: [id],
-  
+  });
+  console.log(result, "result");
+  const receipt = await waitForTransactionReceipt(config, {
+    hash: result,
+  });
+  console.log(receipt, "receipt");
+  return receipt;
+};
+
+export const buyMatrix= async (id) => {
+  console.log(id, "buyMatrix");
+  const result = await writeContract(config, {
+    abi: ContractABI,
+    address: ContractAddress,
+    functionName: "buyMatrix",
+    args: [id],
   });
   console.log(result, "result");
   const receipt = await waitForTransactionReceipt(config, {

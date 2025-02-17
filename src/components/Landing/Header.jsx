@@ -20,14 +20,14 @@ function Header() {
 
   return (
     <div>
-      <header style={{ position: "fixed"}}>
+      <header style={{ position: "fixed" , background: "radial-gradient(ellipse at 20% 100%,  #6bba00,#d4f059)"}}>
         <div className="container">
           <div className="row">
             <div className="col-sm-12 col-md-4 logo d-flex align-items-center justify-content-between px-4">
               <Link to="/">
                 <img
                   className="nav-logo ps-3"
-                  src="/Tether Ocean.png"
+                  src="/final logo.png"
                   alt="company Logo"
                 />
               </Link>

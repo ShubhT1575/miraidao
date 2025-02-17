@@ -16,6 +16,7 @@ import economy from "../../src/assets/img/economy.png";
 import { FaSackDollar } from "react-icons/fa6";
 import { RiFundsBoxLine } from "react-icons/ri";
 import { RiWallet3Line } from "react-icons/ri";
+import { LuPackageCheck } from "react-icons/lu";
 import "../../src/style/sidebar.css";
 
 function Sidebar() {
@@ -240,29 +241,39 @@ function Sidebar() {
 
 
 
-            {/* <li className="slide has-sub">
+            <li className="slide has-sub">
               <Link
                 to="/CoreIncome"
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
-                <GiProfit className="side-menu__icon" />
-                <span className="side-menu__label">Daily Login Reward</span>
+                <GiProfit className="side-menu__icon text-dark" />
+                <span className="side-menu__label text-dark">Referral Income</span>
               </Link>
-            </li> */}
+            </li>
 
 
-            {/* <li className="slide has-sub">
+            <li className="slide has-sub">
               <Link
                 to="/FortuneIncome"
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
-                <RiWallet3Line className="side-menu__icon" />
-                <span className="side-menu__label">Fund Wallet Reward</span>
+                <LuPackageCheck className="side-menu__icon text-dark" />
+                <span className="side-menu__label text-dark">Contributions</span>
               </Link>
-            </li> */}
-
+            </li>
+               
+            <li className="slide has-sub">
+              <Link
+                to="/RankReward"
+                className="side-menu__item"
+                onClick={closeSidebar}
+              >
+                <i className="ri-wallet-3-fill side-menu__icon text-dark"></i>
+                <span className="side-menu__label text-dark">Withdrawl</span>
+              </Link>
+            </li>
 
             {/* <li className="slide has-sub">
               <Link
@@ -368,19 +379,10 @@ function Sidebar() {
             )} */}
 
 
-            {/* <li className="slide has-sub">
-              <Link
-                to="/Withdraw"
-                className="side-menu__item"
-                onClick={closeSidebar}
-              >
-                <i className="ri-wallet-3-fill side-menu__icon"></i>
-                <span className="side-menu__label">Withdraw</span>
-              </Link>
-            </li> */}
+
 
             
-            {/* <li className="slide has-sub">
+            <li className="slide has-sub">
               <div className="logoutbtn">
                 <Link
                   to="/SignIn"
@@ -393,13 +395,13 @@ function Sidebar() {
                 >
                   <button
                     type="button"
-                    className="btn btn-danger-gradient text-dark btn-wave logout-btn"
+                    className="btn btn-success-gradient text-dark btn-wave logout-btn"
                   >
                     Logout
                   </button>
                 </Link>
               </div>
-            </li> */}
+            </li>
           </ul>
         </nav>
       </div>
