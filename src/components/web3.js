@@ -118,6 +118,38 @@ export const UserExist = async (address) => {
     return false;
   }
 };
+export const getPendingCycle = async (user,id) => {
+  // console.log(address,"addddd")
+  let result;
+  try {
+    result = await readContract(config, {
+      abi: ContractABI,
+      address: ContractAddress,
+      functionName: "getPendingCycle",
+      args: [user,id],
+    });
+    return result;
+  } catch (error) {
+    console.log("Error checking if user exists:", error);
+    return false;
+  }
+};
+export const getReinvestCount = async (user,id) => {
+  // console.log(address,"addddd")
+  let result;
+  try {
+    result = await readContract(config, {
+      abi: ContractABI,
+      address: ContractAddress,
+      functionName: "getReinvestCount",
+      args: [user,id],
+    });
+    return result;
+  } catch (error) {
+    console.log("Error checking if user exists:", error);
+    return false;
+  }
+};
 
 export const UserData = async (address) => {
   let data;

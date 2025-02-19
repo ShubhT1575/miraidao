@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import AreaChart from "../Chart/AreaChart";
-import { buyMatrix, LevelTeamBusiness, UserData } from "../web3";
+import { buyMatrix, getPendingCycle, getReinvestCount, LevelTeamBusiness, UserData } from "../web3";
 import lapsLogo from "../../assets/img/loan.png";
 import { useSelector } from "react-redux";
 import { cutAfterDecimal } from "../web3";
@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useAccount } from "wagmi";
 import toast from "react-hot-toast";
 import { getBalance } from "viem/actions";
+import Tooltip from "../ToopTip/Tooptip";
 
 function DashboardRow2() {
   const [TBusiness, setTeamBusiness] = useState();
@@ -32,6 +33,8 @@ function DashboardRow2() {
   const baseUrl = window.location.origin;
   console.log(baseUrl, "baseUrl");
   const inputRef = useRef();
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
   // async function fetchData() {
   //   try {
   //     let data = await UserData(address);
@@ -303,6 +306,10 @@ function DashboardRow2() {
   const [pool3, setPool3] = useState([]);
   const pool3pk1 = pool3?.filter((item)=> item.packageId === 1)
   const pool3pk2 = pool3?.filter((item)=> item.packageId === 2)
+  const [cycle1,setCycle1] = useState(0)
+  const [cycle2,setCycle2] = useState(0)
+  const [reInvest1,setReInvest1] = useState(0)
+  const [reInvest2,setReInvest2] = useState(0)
   const getPool1 = async (id) => {
     const res = await axios.get(apiUrl + "/newuserplacePool", {
       params: {
@@ -313,6 +320,19 @@ function DashboardRow2() {
     });
     console.log(res?.data, "Matrix1");
     setPool1(res?.data);
+    const cyc1 = await getPendingCycle(address,1)
+    const cyc2 = await getPendingCycle(address,2)
+    const reinvestcount1 = await getReinvestCount(address,1)
+    const reinvestcount2 = await getReinvestCount(address,2)
+    const rein1 = Number(reinvestcount1)
+    const rein2 = Number(reinvestcount2)
+    const cycleFirst = Number(cyc1)
+    const cycleSecond = Number(cyc2)
+    // console.log(cycleFirst,"cyc1,cyc2")
+    setCycle1(cycleFirst)
+    setReInvest1(rein1)
+    setReInvest2(rein2)
+    setCycle2(cycleSecond)
     // console.log(pool1, "pool1");
   };
   const getPool2 = async (id) => {
@@ -343,6 +363,7 @@ function DashboardRow2() {
       getPool1();
       getPool2();
       getPool3();
+      
     }
   }, [address]);
 
@@ -419,7 +440,8 @@ function DashboardRow2() {
                   <div className="card custom-card school-card new-card-box">
                     <div className="card-body d-flex justify-content-between">
                       <div>
-                        <div className="recycle">1</div>
+                        <div className="recycle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Re-Invest">{reInvest1}</div>
+                        <div className="recycle recycle2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pending Cycle">{cycle1}</div>
                         <div
                           className="d-flex gap-2"
                           style={{ justifySelf: "center" }}
@@ -472,7 +494,8 @@ function DashboardRow2() {
                   <div className="card custom-card school-card new-card-box">
                     <div className="card-body d-flex justify-content-between">
                       <div>
-                        <div className="recycle">0</div>
+                      <div className="recycle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Re-Invest">{reInvest2}</div>
+                      <div className="recycle recycle2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Pending Cycle">{cycle2}</div>
 
                         <span
                           className="d-block mb-1"
@@ -517,6 +540,7 @@ function DashboardRow2() {
                       {/* <div className="ss"> */}
                       <div>
                         <div className="card custom-card school-card new-card-box small-box">
+                        <div className="tooptip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title={pool1pk1[1]?.user? pool1pk1[1]?.user : pool1pk1[0]?.user}>
                           <div
                             className={`card-body d-flex gap-2 justify-content-between slotBox ${
                               pool1pk1[1]?.place === 1 ? "slotBox-green" : ""
@@ -525,9 +549,11 @@ function DashboardRow2() {
                             <div></div>
                           </div>
                         </div>
+                        </div>
                       </div>
                       <div>
                         <div className="card custom-card school-card new-card-box small-box">
+                        <div className="tooptip" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title={pool1pk1[0]?.user? pool1pk1[0]?.user : "N/A"}>
                           <div
                             className={`card-body d-flex gap-2 justify-content-between slotBox ${
                               pool1pk1[0]?.place === 2 ? "slotBox-green" : ""
@@ -535,6 +561,7 @@ function DashboardRow2() {
                           >
                             <div></div>
                           </div>
+                        </div>
                         </div>
                       </div>
                       {/* </div> */}
