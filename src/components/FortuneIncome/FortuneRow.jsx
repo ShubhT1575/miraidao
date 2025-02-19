@@ -83,7 +83,7 @@ const paginatedTable2 = transaction
       <div className="col-xl-6">
         <div className="card custom-card overflow-hidden new-card">
           <div className="card-header justify-content-between color-dark">
-            <div className="card-title">Contributions History <strong>$5</strong></div>
+            <div className="card-title">Package History<strong>$5</strong></div>
           </div>
 
           <div className="card-body active-tab">
@@ -144,7 +144,7 @@ const paginatedTable2 = transaction
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between color-dark">
               <div>
-                Showing {paginatedTable1?.length || 0} Contributions History
+                Showing {paginatedTable1?.length || 0} Package History
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               <div>
@@ -184,7 +184,7 @@ const paginatedTable2 = transaction
       <div className="col-xl-6">
         <div className="card custom-card overflow-hidden new-card">
           <div className="card-header justify-content-between color-dark">
-            <div className="card-title">Contributions History <strong>$25</strong></div>
+            <div className="card-title">Package History<strong>$25</strong></div>
           </div>
 
           <div className="card-body active-tab">
@@ -245,7 +245,7 @@ const paginatedTable2 = transaction
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between color-dark">
               <div>
-                Showing {paginatedTable2?.length || 0} Contributions History
+                Showing {paginatedTable2?.length || 0} Package History
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               <div>

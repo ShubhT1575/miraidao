@@ -48,7 +48,7 @@ function SignUp() {
     );
   }, [dispatch, chainId, address, isConnected, isDisconnected]);
 
-  const [packageValue, setPackageValue] = useState("1");
+  const [packageValue, setPackageValue] = useState("5");
   const [inputRef, setInputRef] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [refFromUrl, setRefFromUrl] = useState();
@@ -466,7 +466,7 @@ function SignUp() {
                           onClick={() =>
                             Register(
                               refFromUrl ? refFromUrl : inputRef,
-                              packageValue
+                              1
                             )
                           }
                         >

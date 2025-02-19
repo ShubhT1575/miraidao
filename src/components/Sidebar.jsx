@@ -241,17 +241,17 @@ function Sidebar() {
 
 
 
-            <li className="slide has-sub">
+
+              <li className="slide has-sub">
               <Link
-                to="/CoreIncome"
+                to="/RankReward"
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
                 <GiProfit className="side-menu__icon text-dark" />
-                <span className="side-menu__label text-dark">Referral Income</span>
+                <span className="side-menu__label text-dark">Referral History</span>
               </Link>
             </li>
-
 
             <li className="slide has-sub">
               <Link
@@ -260,20 +260,22 @@ function Sidebar() {
                 onClick={closeSidebar}
               >
                 <LuPackageCheck className="side-menu__icon text-dark" />
-                <span className="side-menu__label text-dark">Contributions</span>
+                <span className="side-menu__label text-dark">Package History</span>
               </Link>
             </li>
-               
-            <li className="slide has-sub">
+
+                        <li className="slide has-sub">
               <Link
-                to="/RankReward"
+                to="/CoreIncome"
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
                 <i className="ri-wallet-3-fill side-menu__icon text-dark"></i>
-                <span className="side-menu__label text-dark">Withdrawl</span>
+                <span className="side-menu__label text-dark">Earning Report</span>
               </Link>
             </li>
+               
+
 
             {/* <li className="slide has-sub">
               <Link

@@ -12,7 +12,7 @@ function CoreHead() {
           </ol>
         </nav>
         <h1 className="page-title fw-bold fs-18 mb-0 text-dark">
-        Referral Income Data
+        Earning Report Data
         </h1>
       </div>
     </div>

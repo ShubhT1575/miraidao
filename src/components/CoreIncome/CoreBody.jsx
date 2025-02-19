@@ -45,6 +45,7 @@ const totalPagesTable2 = Math.ceil(transaction.filter(item => item.packageId ===
     const res = await axios.get(apiUrl + "/Income", {
       params: {
         user: address,
+        // user: "0x8a62CcdFFb086c190A869E49761E6F9E422214E7",
       },
     });
     console.log(res?.data, "income");
@@ -84,7 +85,7 @@ const paginatedTable2 = transaction
       <div className="col-xl-6">
         <div className="card custom-card overflow-hidden new-card">
           <div className="card-header justify-content-between color-dark">
-            <div className="card-title">Referral Income <strong>$5</strong></div>
+            <div className="card-title">Earning Report <strong>$5</strong></div>
           </div>
 
           <div className="card-body active-tab">
@@ -147,7 +148,7 @@ const paginatedTable2 = transaction
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between color-dark">
               <div>
-                Showing {paginatedTable1?.length || 0} Referral Income
+                Showing {paginatedTable1?.length || 0} Earning Report
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               <div>
@@ -187,7 +188,7 @@ const paginatedTable2 = transaction
       <div className="col-xl-6">
         <div className="card custom-card overflow-hidden new-card">
           <div className="card-header justify-content-between color-dark">
-            <div className="card-title">Referral Income <strong>$25</strong></div>
+            <div className="card-title">Earning Report <strong>$25</strong></div>
           </div>
 
           <div className="card-body active-tab">
@@ -250,7 +251,7 @@ const paginatedTable2 = transaction
           <div className="card-footer pagination-body">
             <div className="d-flex align-items-center justify-content-between color-dark">
               <div>
-                Showing {paginatedTable2?.length || 0} Referral Income
+                Showing {paginatedTable2?.length || 0} Earning Report
                 <i className="bi bi-arrow-right ms-2 fw-semibold"></i>
               </div>
               <div>

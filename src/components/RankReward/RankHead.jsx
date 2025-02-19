@@ -12,7 +12,7 @@ function RankHead() {
           </ol>
         </nav>
         <h1 className="page-title fw-bold fs-18 mb-0 text-dark">
-        Withdrawl Data
+        Referral History
         </h1>
       </div>
     </div>

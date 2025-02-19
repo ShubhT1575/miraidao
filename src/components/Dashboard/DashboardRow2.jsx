@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AreaChart from "../Chart/AreaChart";
 import { buyMatrix, LevelTeamBusiness, UserData } from "../web3";
 import lapsLogo from "../../assets/img/loan.png";
@@ -29,7 +29,9 @@ function DashboardRow2() {
   // console.log(address,"xxx")
   // const address = walletAddress;
   const [matrixIncome, setMatrixIncome] = useState([]);
-
+  const baseUrl = window.location.origin;
+  console.log(baseUrl, "baseUrl");
+  const inputRef = useRef();
   // async function fetchData() {
   //   try {
   //     let data = await UserData(address);
@@ -171,11 +173,11 @@ function DashboardRow2() {
     setDashData(res?.data);
     console.log(dashData, "dash");
   };
-  
+
   const [income, setIncome] = useState([]);
   const [income5, setIncome5] = useState(0);
   const [income25, setIncome25] = useState(0);
-  
+
   const showIncome = async () => {
     try {
       const res = await axios.get(apiUrl + "/Income", {
@@ -187,32 +189,26 @@ function DashboardRow2() {
       console.error("Error fetching income:", error);
     }
   };
-  
+
   // Update income5 whenever income changes
   useEffect(() => {
     let amount = income
       .filter((item) => item.packageId === 1)
       .reduce((acc, item) => acc + item.amount, 0);
-      
+
     setIncome5(amount);
   }, [income]); // Runs when `income` changes
   useEffect(() => {
     let amount = income
       .filter((item) => item.packageId === 2)
       .reduce((acc, item) => acc + item.amount, 0);
-      
+
     setIncome25(amount);
   }, [income]); // Runs when `income` changes
-  
-  
 
   const [transaction, setTransaction] = useState([]);
   const showTransaction = async () => {
-    const res = await axios.get(apiUrl + "/recentTransaction", {
-      params: {
-        user: address,
-      },
-    });
+    const res = await axios.get(apiUrl + "/recentTransaction", {});
     console.log(res?.data, "xx");
     setTransaction(res?.data);
   };
@@ -299,11 +295,18 @@ function DashboardRow2() {
   };
 
   const [pool1, setPool1] = useState([]);
+  const pool1pk1 = pool1?.filter((item)=> item.packageId === 1)
+  const pool1pk2 = pool1?.filter((item)=> item.packageId === 2)
   const [pool2, setPool2] = useState([]);
+  const pool2pk1 = pool2?.filter((item)=> item.packageId === 1)
+  const pool2pk2 = pool2?.filter((item)=> item.packageId === 2)
   const [pool3, setPool3] = useState([]);
+  const pool3pk1 = pool3?.filter((item)=> item.packageId === 1)
+  const pool3pk2 = pool3?.filter((item)=> item.packageId === 2)
   const getPool1 = async (id) => {
     const res = await axios.get(apiUrl + "/newuserplacePool", {
       params: {
+        // user: "0x8a62CcdFFb086c190A869E49761E6F9E422214E7",
         user: address,
         poolId: 1,
       },
@@ -315,6 +318,7 @@ function DashboardRow2() {
   const getPool2 = async (id) => {
     const res = await axios.get(apiUrl + "/newuserplacePool", {
       params: {
+        // user: "0x8a62CcdFFb086c190A869E49761E6F9E422214E7",
         user: address,
         poolId: 2,
       },
@@ -326,6 +330,7 @@ function DashboardRow2() {
     const res = await axios.get(apiUrl + "/newuserplacePool", {
       params: {
         user: address,
+        // user: "0x8a62CcdFFb086c190A869E49761E6F9E422214E7",
         poolId: 3,
       },
     });
@@ -333,16 +338,29 @@ function DashboardRow2() {
     setPool3(res?.data);
   };
 
-  useEffect(()=>{
-    if(address){
+  useEffect(() => {
+    if (address) {
       getPool1();
       getPool2();
       getPool3();
     }
-  },[address])
+  }, [address]);
 
   // const hasPlace1 = pool1.some(item => item.place === 1);
   // const hasPlace2 = pool1.some(item => item.place === 2);
+  const [copied, setCopied] = useState(false);
+  const inputValue = `${baseUrl}/SignUp?ref=${dashData?.user}`;
+  console.log(inputValue, "inputRef");
+
+  const handleCopy = () => {
+    if (inputRef?.current) {
+      // console.log("bbb")
+      inputRef.current.select();
+      navigator.clipboard.writeText(inputRef.current.value);
+      setCopied(true);
+      // setTimeout(() => setCopied(false), 1000);
+    }
+  };
 
   return (
     <div className="row">
@@ -499,17 +517,23 @@ function DashboardRow2() {
                       {/* <div className="ss"> */}
                       <div>
                         <div className="card custom-card school-card new-card-box small-box">
-                          <div className={`card-body d-flex gap-2 justify-content-between slotBox ${pool1[1]?.place === 1? "slotBox-green":""}`}>
-                            <div>
-                            </div>
+                          <div
+                            className={`card-body d-flex gap-2 justify-content-between slotBox ${
+                              pool1pk1[1]?.place === 1 ? "slotBox-green" : ""
+                            }`}
+                          >
+                            <div></div>
                           </div>
                         </div>
                       </div>
                       <div>
                         <div className="card custom-card school-card new-card-box small-box">
-                          <div className={`card-body d-flex gap-2 justify-content-between slotBox ${pool1[0]?.place === 2? "slotBox-green":""}`}>
-                            <div>
-                            </div>
+                          <div
+                            className={`card-body d-flex gap-2 justify-content-between slotBox ${
+                              pool1pk1[0]?.place === 2 ? "slotBox-green" : ""
+                            }`}
+                          >
+                            <div></div>
                           </div>
                         </div>
                       </div>
@@ -525,17 +549,23 @@ function DashboardRow2() {
                       {/* <div className="ss"> */}
                       <div>
                         <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                            </div>
+                          <div
+                            className={`card-body d-flex gap-2 justify-content-between slotBox ${
+                              pool1pk2[1]?.place === 1 ? "slotBox-green" : ""
+                            }`}
+                          >
+                            <div></div>
                           </div>
                         </div>
                       </div>
                       <div>
                         <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                            </div>
+                          <div
+                            className={`card-body d-flex gap-2 justify-content-between slotBox ${
+                              pool1pk2[0]?.place === 2 ? "slotBox-green" : ""
+                            }`}
+                          >
+                            <div></div>
                           </div>
                         </div>
                       </div>
@@ -552,209 +582,305 @@ function DashboardRow2() {
                     <div className="card-body d-flex gap-2 justify-content-between">
                       {/* <div className="ss"> */}
                       <div className="row-slot">
-                        
+                        {pool2pk1[0]?.place >= 1 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {pool2pk1[0]?.place >= 2 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {pool2pk1[0]?.place >= 3 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {pool2pk1[0]?.place == 4 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      {/* </div> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="g-col-6">
+                <div>
+                  <div className="card custom-card school-card new-card-box">
+                    <div className="card-body d-flex gap-2 justify-content-between">
+                      {/* <div className="ss"> */}
+                      <div className="row-slot">
+                        {pool2pk2[0]?.place >= 1 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {pool2pk2[0]?.place >= 2 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {pool2pk2[0]?.place >= 3 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {pool2pk2[0]?.place == 4 ? (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <div className="card custom-card school-card new-card-box small-box">
+                              <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                                <div></div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      {/* </div> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="grid">
+              <div className="g-col-6 ">
+                <div>
+                  <div className="card custom-card school-card new-card-box">
+                    <div className="card-body d-flex gap-2 justify-content-between flex-wrap">
+                      {/* <div className="ss"> */}
+
+                      {pool3pk1[0]?.place >= 1 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
                         <div>
                           <div className="card custom-card school-card new-card-box small-box">
                             <div className="card-body d-flex gap-2 justify-content-between slotBox ">
-                              <div>
-                              </div>
+                              <div></div>
                             </div>
                           </div>
                         </div>
+                      )}
+                      {pool3pk1[0]?.place >= 2 ? (
                         <div>
                           <div className="card custom-card school-card new-card-box small-box">
-                            <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                              <div>
-                              </div>
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
                             </div>
                           </div>
                         </div>
+                      ) : (
                         <div>
                           <div className="card custom-card school-card new-card-box small-box">
-                            <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                              <div className="small-box">
-                              </div>
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
                             </div>
                           </div>
                         </div>
+                      )}
+                      {pool3pk1[0]?.place >= 3 ? (
                         <div>
                           <div className="card custom-card school-card new-card-box small-box">
-                            <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                              <div>
-                              </div>
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
                             </div>
                           </div>
                         </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk1[0]?.place >= 4 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk1[0]?.place >= 5 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk1[0]?.place >= 6 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk1[0]?.place >= 7 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk1[0]?.place == 8 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
 
-                      </div>
-                      {/* </div> */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="g-col-6">
-                <div>
-                  <div className="card custom-card school-card new-card-box">
-                    <div className="card-body d-flex gap-2 justify-content-between">
-                      {/* <div className="ss"> */}
-                      <div className="row-slot">
-                        <div>
-                          <div className="card custom-card school-card new-card-box small-box">
-                            <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                              <div>
-                                {/* <span className="d-block mb-1">Rank</span> */}
-                                {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                              </div>
-                              {/* <div></div> */}
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <div className="card custom-card school-card new-card-box small-box">
-                            <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                              <div>
-                                {/* <span className="d-block mb-1">Rank</span> */}
-                                {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                              </div>
-                              {/* <div></div> */}
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <div className="card custom-card school-card new-card-box small-box">
-                            <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                              <div>
-                                {/* <span className="d-block mb-1">Rank</span> */}
-                                {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                              </div>
-                              {/* <div></div> */}
-                            </div>
-                          </div>
-                        </div>
-                        <div>
-                          <div className="card custom-card school-card new-card-box small-box">
-                            <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                              <div>
-                                {/* <span className="d-block mb-1">Rank</span> */}
-                                {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                              </div>
-                              {/* <div></div> */}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {/* </div> */}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="grid">
-              <div className="g-col-6 ">
-                <div>
-                  <div className="card custom-card school-card new-card-box">
-                    <div className="card-body d-flex gap-2 justify-content-between flex-wrap">
-                      {/* <div className="ss"> */}
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
-                            </div>
-                            {/* <div></div> */}
-                          </div>
-                        </div>
-                      </div>
                       {/* </div> */}
                     </div>
                   </div>
@@ -765,102 +891,144 @@ function DashboardRow2() {
                   <div className="card custom-card school-card new-card-box">
                     <div className="card-body d-flex gap-2 justify-content-between flex-wrap">
                       {/* <div className="ss"> */}
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+
+                      {pool3pk2[0]?.place >= 1 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+                      )}
+                      {pool3pk2[0]?.place >= 2 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+                      )}
+                      {pool3pk2[0]?.place >= 3 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+                      )}
+                      {pool3pk2[0]?.place >= 4 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="card custom-card school-card new-card-box small-box">
-                          <div className="card-body d-flex gap-2 justify-content-between slotBox">
-                            <div>
-                              {/* <span className="d-block mb-1">Rank</span> */}
-                              {/* <h6 className="mb-0 fw-semibold">
-                      </h6> */}
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
                             </div>
-                            {/* <div></div> */}
                           </div>
                         </div>
-                      </div>
+                      )}
+                      {pool3pk2[0]?.place >= 5 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk2[0]?.place >= 6 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk2[0]?.place >= 7 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      {pool3pk2[0]?.place == 8 ? (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox slotBox-green">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="card custom-card school-card new-card-box small-box">
+                            <div className="card-body d-flex gap-2 justify-content-between slotBox ">
+                              <div></div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
                       {/* </div> */}
                     </div>
                   </div>
@@ -872,12 +1040,23 @@ function DashboardRow2() {
                 <div className="card custom-card school-card new-card-box">
                   <div className="card-body d-flex gap-2 justify-content-between">
                     <div className="btn-div">
+                      <input
+                        type="text"
+                        ref={inputRef}
+                        value={inputValue}
+                        style={{ display: "none" }}
+                      />
                       <button
                         type="button"
-                        className="btn btn-warning-gradient btn-wave"
-                        style={{ color: "black", fontWeight: "500" }}
+                        className={`btn btn-wave ${
+                          copied
+                            ? "btn-success-gradient"
+                            : "btn-warning-gradient"
+                        }`}
+                        style={{ fontWeight: "500" }}
+                        onClick={handleCopy}
                       >
-                        Referrel Link
+                        {copied ? "Copied" : "Copy Referrel Link"}
                       </button>
                       {/* <button type="button" className="btn btn-warning-gradient btn-wave">Referrel Link</button>
                     <button type="button" className="btn btn-warning-gradient btn-wave">Withdrawl</button> */}

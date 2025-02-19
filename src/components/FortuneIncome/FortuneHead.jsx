@@ -12,7 +12,7 @@ function FortuneHead() {
           </ol>
         </nav>
         <h1 className="page-title fw-bold fs-18 mb-0 text-dark">
-        Contributions
+        Package History
         </h1>
       </div>
     </div>
