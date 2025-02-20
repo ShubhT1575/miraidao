@@ -12,6 +12,9 @@ import { useAccount } from "wagmi";
 import toast from "react-hot-toast";
 import { getBalance } from "viem/actions";
 import Tooltip from "../ToopTip/Tooptip";
+import { IoClipboardSharp } from "react-icons/io5";
+import { FaClipboardCheck } from "react-icons/fa6";
+
 
 function DashboardRow2() {
   const [TBusiness, setTeamBusiness] = useState();
@@ -1080,10 +1083,10 @@ const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstra
                             ? "btn-success-gradient"
                             : "btn-warning-gradient"
                         }`}
-                        style={{ fontWeight: "500" }}
+                        style={{ fontWeight: "500" , display: "flex", alignItems: "center"}}
                         onClick={handleCopy}
                       >
-                        {copied ? "Copied" : "Copy Referrel Link"}
+                        {copied ? <>Copied <FaClipboardCheck style={{height: "20px" , color: "#fff"}}/></> : <>Copy Referrel Link <IoClipboardSharp style={{height: "20px" , color: "#FFF"}}/></>}
                       </button>
                       {/* <button type="button" className="btn btn-warning-gradient btn-wave">Referrel Link</button>
                     <button type="button" className="btn btn-warning-gradient btn-wave">Withdrawl</button> */}

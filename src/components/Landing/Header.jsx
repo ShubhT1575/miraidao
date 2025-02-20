@@ -39,15 +39,15 @@ function Header() {
               <nav className="navul ">
                 <ul>
                   <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/"  style={{color: "#000"}}>Home</Link>
                   </li>
                   <li className="">
-                    <Link className="" to="/SignIn">
+                    <Link className="" to="/SignIn"  style={{color: "#000"}}>
                       Sign In
                     </Link>
                   </li>
-                  <li className="btn nav-btn" style={{}}>
-                    <Link to="/SignUp" className="py-2.5 px-3 text-light">
+                  <li className="btn nav-btn text-dark">
+                    <Link to="/SignUp" className="py-2.5 px-3 text-dark" style={{borderRadius: "10px", border: "2px solid black"}} >
                       SIGN UP TO JOIN
                     </Link>
                   </li>
@@ -67,7 +67,7 @@ function Header() {
 
       <div
         className={`offcanvas offcanvas-end  ${isMenuOpen ? "show" : ""} w-50`}
-        style={{ background: "#000" }}
+        // style={{ background: "#000" }}
         tabIndex="-1"
         id="offcanvasSidebar"
         aria-labelledby="offcanvasSidebarLabel"
@@ -86,9 +86,9 @@ function Header() {
             <ImCancelCircle />
           </span>
         </div>
-        <div className="offcanvas-body">
+        <div className="offcanvas-body" style={{background: "radial-gradient(ellipse at 20% 100%,  #6bba00,#d4f059)" , border: "none", paddingTop: "30px"}}>
           <nav>
-            <ul className={` ms-3 ${isMenuOpen ? "d-block" : "none"}`}>
+            <ul className={` ms-3 ${isMenuOpen ? "d-block" : "none"}`} >
               <li className="w-50">
                 <Link to="/" onClick={toggleMenu}>
                   <span className="fs-4">

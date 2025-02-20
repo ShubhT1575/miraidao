@@ -81,10 +81,15 @@ function Sidebar() {
     <div
       className={`app-sidebar app-sidebar-ll sticky t header-nav-ll`}
       id="sidebar"
-      style={{ overflowY: "auto" , border: "none" }}
+      style={{ overflowY: "auto", border: "none", background: "none" }}
     >
-      <div className="main-sidebar-header" style={{background: "radial-gradient(ellipse at 20% 100%, #d4f059, #6bba00)", height: "88px"
-}}>
+      <div
+        className="main-sidebar-header"
+        style={{
+          background: "radial-gradient(ellipse at 20% 100%, #d4f059, #6bba00)",
+          height: "88px",
+        }}
+      >
         <a href="/dashboard" className="header-logo fs-4 fw-bold ">
           <img
             src="/final logo.png"
@@ -96,7 +101,11 @@ function Sidebar() {
       <div
         className="main-sidebar"
         id="sidebar-scroll"
-        style={{ display: "block",background: "radial-gradient(circle, #d4f059, #6bba00)" }}
+        style={{
+          display: "block",
+          background: "radial-gradient(circle, #d4f059, #6bba00)",
+          overflow: "hidden",
+        }}
       >
         <nav className="main-menu-container nav nav-pills flex-column sub-open position-relative h-100 mt-3">
           <ul className="main-menu main-menu-ll">
@@ -107,7 +116,7 @@ function Sidebar() {
               <img
                 src="/final logo.png"
                 alt=""
-                style={{ height: "40px",width: "196px", display: "none" }}
+                style={{ height: "40px", width: "196px", display: "none" }}
                 className="dash-logo"
               />
             </div>
@@ -239,17 +248,16 @@ function Sidebar() {
               </Link>
             </li> */}
 
-
-
-
-              <li className="slide has-sub">
+            <li className="slide has-sub">
               <Link
                 to="/RankReward"
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
                 <GiProfit className="side-menu__icon text-dark" />
-                <span className="side-menu__label text-dark">Referral History</span>
+                <span className="side-menu__label text-dark">
+                  Referral History
+                </span>
               </Link>
             </li>
 
@@ -260,22 +268,24 @@ function Sidebar() {
                 onClick={closeSidebar}
               >
                 <LuPackageCheck className="side-menu__icon text-dark" />
-                <span className="side-menu__label text-dark">Package History</span>
+                <span className="side-menu__label text-dark">
+                  Package History
+                </span>
               </Link>
             </li>
 
-                        <li className="slide has-sub">
+            <li className="slide has-sub">
               <Link
                 to="/CoreIncome"
                 className="side-menu__item"
                 onClick={closeSidebar}
               >
                 <i className="ri-wallet-3-fill side-menu__icon text-dark"></i>
-                <span className="side-menu__label text-dark">Earning Report</span>
+                <span className="side-menu__label text-dark">
+                  Earning Report
+                </span>
               </Link>
             </li>
-               
-
 
             {/* <li className="slide has-sub">
               <Link
@@ -308,7 +318,6 @@ function Sidebar() {
               </Link>
             </li> */}
 
-
             {/* <li className="slide has-sub">
               <Link
                 to="/AutoGlobal"
@@ -324,7 +333,6 @@ function Sidebar() {
                 </span>
               </Link>
             </li> */}
-
 
             {/* <li className="slide has-sub">
               <Link
@@ -342,7 +350,6 @@ function Sidebar() {
               </Link>
             </li> */}
 
-
             {/* <li className="slide has-sub">
               <Link
                 to="/Ranking"
@@ -354,7 +361,6 @@ function Sidebar() {
               </Link>
             </li> */}
 
-
             {/* <li className="slide has-sub">
               <Link
                 to="/Stake"
@@ -365,7 +371,6 @@ function Sidebar() {
                 <span className="side-menu__label">Team Data</span>
               </Link>
             </li> */}
-
 
             {/* {Waddress === Raddress && (
               <li className="slide has-sub">
@@ -380,10 +385,6 @@ function Sidebar() {
               </li>
             )} */}
 
-
-
-
-            
             <li className="slide has-sub">
               <div className="logoutbtn">
                 <Link

@@ -46,7 +46,7 @@ function Homepage() {
                 <h1 className="hero-title">
                   <span style={{ color: '#ff5183' }}>Blockchain</span>-Powered Ecosystem of the <span>Future!</span>
                 </h1>
-                <p className="lead text-light">
+                <p className="lead text-dark fw-900">
                   Revolutionizing the way we interact with digital assets through blockchain technology—secure, transparent, and decentralized.
                 </p>
                 <div className="apk-div py-3 text-start">
@@ -154,7 +154,7 @@ function Homepage() {
               <h2 className="section-heading text-light">
                 About <span style={{ color: "#ff5183" }}>Blockchain</span>
               </h2>
-              <h4 style={{ fontWeight: "600" }} className="text-light">
+              <h4 style={{ fontWeight: "600" }} className="text-dark fw-700">
                 Why choose Blockchain for secure decentralized transactions?
               </h4>
 
@@ -163,7 +163,7 @@ function Homepage() {
                   height: fullheight ? "fit-content" : "204px",
                   overflow: "hidden",
                   lineHeight: "28px",
-                  color: "#f4f4f4",
+                  color: "#000",
                 }}
               >
                 Blockchain is the most advanced technology, enabling decentralized digital currencies, secure transactions, and transparent contract execution. The use of blockchain eliminates the need for intermediaries and ensures that the ecosystem remains trustless and transparent. Whether you're an investor, developer, or user, blockchain technology empowers you to transact securely and with peace of mind...
@@ -207,9 +207,9 @@ function Homepage() {
               }}>
                 <div className="invest-card-icon" >
                   <img src="/Home Logo/Asset 3.png" alt="" className="col-2 mb-3" />
-                  <div className="inv-div color-#1ecba3">Decentralization</div>
+                  <div className="inv-div color-#1ecba3" >Decentralization</div>
 
-                  <p>
+                  <p className="text-light">
                     Blockchain allows for decentralized control, removing intermediaries in peer-to-peer transactions.
                   </p>
                 </div>
@@ -238,7 +238,7 @@ function Homepage() {
                 <div className="invest-card-icon">
                   <img src="/Home Logo/Asset 8.png" alt="" className="col-2 mb-3" />
                   <div className="inv-div">Immutability</div>
-                  <p>
+                  <p className="text-light">
                     Blockchain records are immutable, ensuring that once data is added, it cannot be altered.
                   </p>
                 </div>
@@ -267,7 +267,7 @@ function Homepage() {
                 <div className="invest-card-icon">
                   <img src="/Home Logo/Asset 1.png" alt="" className="col-2 mb-3" />
                   <div className="inv-div">Security</div>
-                  <p>
+                  <p className="text-light">
                     Blockchain uses cryptographic algorithms to protect data and secure transactions against fraud.
                   </p>
                 </div>
@@ -296,7 +296,7 @@ function Homepage() {
                 <div className="invest-card-icon">
                   <img src="/Home Logo/Asset 2.png" alt="" className="col-2 mb-3" />
                   <div className="inv-div">Transparency</div>
-                  <p>
+                  <p className="text-light">
                     Blockchain's public ledger ensures that all transactions are transparent and traceable.
                   </p>
                 </div>
@@ -325,7 +325,7 @@ function Homepage() {
                 <div className="invest-card-icon">
                   <img src="/Home Logo/Asset 10.png" alt="" className="col-2 mb-3" />
                   <div className="inv-div">Smart Contracts</div>
-                  <p>
+                  <p className="text-light">
                     Smart contracts automatically execute transactions once predefined conditions are met, reducing the need for intermediaries.
                   </p>
                 </div>
@@ -354,7 +354,7 @@ function Homepage() {
                 <div className="invest-card-icon">
                   <img src="/Home Logo/MINING.png" alt="" className="col-2 mb-3" />
                   <div className="inv-div">Mining</div>
-                  <p>
+                  <p className="text-light">
                     Mining is the process of validating transactions and securing the blockchain network through computational power.
                   </p>
                 </div>
@@ -383,7 +383,7 @@ function Homepage() {
                 <div className="invest-card-icon">
                   <img src="/Home Logo/CRYPTO ICON.png" alt="" className="col-2 mb-3" />
                   <div className="inv-div">Cryptocurrency</div>
-                  <p>
+                  <p className="text-light">
                     Cryptocurrency is a digital or virtual currency that uses cryptography for secure transactions within the blockchain.
                   </p>
                 </div>
@@ -412,7 +412,7 @@ function Homepage() {
                 <div className="invest-card-icon">
                   <img src="/Home Logo/DLT.png" alt="" className="col-2 mb-3" />
                   <div className="inv-div">DLT</div>
-                  <p>
+                  <p  className="text-light">
                     Distributed Ledger Technology (DLT) enables decentralized and secure data management without a central authority.
                   </p>
                 </div>
@@ -428,7 +428,7 @@ function Homepage() {
         <div className="container">
           <div className="section-title mb-50 text-center">
             <h2 className="title style2 text-light">Frequently Asked Questions</h2>
-            <p className="sec-text text-light">
+            <p className="sec-text text-dark">
               Have questions? We're here to clarify everything about blockchain.
             </p>
           </div>
@@ -460,7 +460,7 @@ function Homepage() {
                     data-bs-parent="#faqAccordion"
                   >
                     <div className="accordion-body">
-                      <p className="faq-text">
+                      <p className="faq-text text-dark">
                         Blockchain is a decentralized digital ledger that records transactions across many computers. It ensures security and transparency in digital transactions.
                       </p>
                     </div>
@@ -489,7 +489,7 @@ function Homepage() {
                     data-bs-parent="#faqAccordion"
                   >
                     <div className="accordion-body">
-                      <p className="faq-text">
+                      <p className="faq-text text-dark">
                         Blockchain uses cryptographic hash functions to secure data, making it resistant to tampering and fraud.
                       </p>
                     </div>
@@ -516,7 +516,7 @@ function Homepage() {
                     data-bs-parent="#faqAccordion"
                   >
                     <div className="accordion-body">
-                      <p className="faq-text">
+                      <p className="faq-text text-dark">
                         Blockchain technology can be accessed through decentralized applications (dApps) and wallets to send, receive, and store cryptocurrencies.
                       </p>
                     </div>
@@ -543,7 +543,7 @@ function Homepage() {
                     data-bs-parent="#faqAccordion"
                   >
                     <div className="accordion-body">
-                      <p className="faq-text">
+                      <p className="faq-text text-dark">
                         Smart contracts are self-executing contracts with the terms directly written into code. They automatically execute transactions when predefined conditions are met.
                       </p>
                     </div>
@@ -570,7 +570,7 @@ function Homepage() {
                     data-bs-parent="#faqAccordion"
                   >
                     <div className="accordion-body">
-                      <p className="faq-text">
+                      <p className="faq-text text-dark">
                         Blockchain offers transparency, security, decentralization, and immutability, making it ideal for various applications such as finance, supply chain, and healthcare.
                       </p>
                     </div>
@@ -597,7 +597,7 @@ function Homepage() {
                     data-bs-parent="#faqAccordion"
                   >
                     <div className="accordion-body">
-                      <p className="faq-text">
+                      <p className="faq-text text-dark">
                         The future of Blockchain is promising, with potential applications in decentralized finance (DeFi), non-fungible tokens (NFTs), and digital identity management.
                       </p>
                     </div>
@@ -617,7 +617,7 @@ function Homepage() {
             <div className="col-xl-8 col-lg-10">
               <div className="section-title text-center mb-50">
                 <h2 className="title style2 text-light">Disclaimer</h2>
-                <p className="sec-text">
+                <p className="sec-text text-dark">
                   Please read this disclaimer carefully before using our services.
                 </p>
               </div>
@@ -626,16 +626,16 @@ function Homepage() {
           <div className="row gy-30">
             <div className="col-md-12">
               <div className="disclaimer-content">
-                <p className="disclaimer-text">
+                <p className="disclaimer-text text-dark">
                   The information provided on this website and the associated services are for informational purposes only. We make no representations or warranties about the accuracy, completeness, or reliability of the information provided. All users of this website should conduct their own research and exercise caution when making financial decisions.
                 </p>
-                <p className="disclaimer-text">
+                <p className="disclaimer-text text-dark">
                   Cryptocurrency investments and blockchain-based applications involve inherent risks, including but not limited to market volatility, security threats, and regulatory uncertainties. We do not guarantee any returns or profits through the use of our services or products.
                 </p>
-                <p className="disclaimer-text">
+                <p className="disclaimer-text text-dark">
                   By accessing or using this website, you acknowledge and agree that you are fully responsible for your actions and any consequences resulting from them. We are not liable for any losses, damages, or expenses incurred as a result of your use of this website or any associated services.
                 </p>
-                <p className="disclaimer-text">
+                <p className="disclaimer-text text-dark">
                   It is recommended to consult with a qualified financial advisor before making any investment decisions. We reserve the right to modify or remove any content on this website at our discretion, without prior notice.
                 </p>
               </div>
@@ -651,7 +651,7 @@ function Homepage() {
           <img src="/img/update/bg/bg-gradient1-1.jpg" alt="img" />
         </div>
         <div className="container">
-          <div className="footer-menu-area m-0 p-0">
+          <div className="footer-menu-area m-0 p-0" style={{borderBottom: "2px solid #000"}}>
             <div className="row justify-content-center align-items-center">
               {/* <div className="col-xl-5 col-lg-12 d-flex w-100 justify-content-center align-items-center flex-wrap font-landing-footer">
                 <span className="">Contract Address:</span>
@@ -674,15 +674,16 @@ function Homepage() {
               <div className="col-lg-6 align-self-center">
                 <div className="social-btn justify-content-center justify-content-lg-start">
                   <a href="https://www.facebook.com/">
-                    <i className="fab fa-facebook-f"></i>
+                    <i className="fab fa-facebook-f" style={{color: "black"}}></i>
                   </a>
-                  <a href="#">
+                  <a href="https://x.com/" style={{color: "black"}}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="16"
                       height="16"
                       viewBox="0 0 16 16"
                       fill="none"
+                      style={{marginBottom: "7px"}}
                     >
                       <path
                         d="M10.0596 7.34522L15.8879 0.570312H14.5068L9.44607 6.45287L5.40411 0.570312H0.742188L6.85442 9.46578L0.742188 16.5703H2.12338L7.4676 10.3581L11.7362 16.5703H16.3981L10.0593 7.34522H10.0596ZM8.16787 9.54415L7.54857 8.65836L2.62104 1.61005H4.74248L8.71905 7.29827L9.33834 8.18405L14.5074 15.5779H12.386L8.16787 9.54449V9.54415Z"
@@ -691,15 +692,15 @@ function Homepage() {
                     </svg>
                   </a>
                   <a href="https://instagram.com/">
-                    <i className="fab fa-instagram"></i>
+                    <i className="fab fa-instagram" style={{color: "black"}}></i>
                   </a>
                   <a href="https://linkedin.com/">
-                    <i className="fab fa-linkedin"></i>
+                    <i className="fab fa-linkedin" style={{color: "black"}}></i>
                   </a>
                 </div>
               </div>
               <div className="col-lg-6 d-flex justify-content-end footer-text-landing">
-                <p className="copyright-text">
+                <p className="copyright-text" style={{color: "black"}}>
                   Copyright © MiraiDao 2025 All rights
                   reserved.
                 </p>
